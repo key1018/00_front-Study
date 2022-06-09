@@ -9,7 +9,7 @@
         <meta name = "author" content = "eunyoung">
         <meta name = "description" content = "표관련태그 공부하는 문서">
 
-        <style>
+        <style> /* CSS 영역 -> 주석도 다르게 표시함 */ 
             thead{
                 background-color: salmon; /* 표의 배경색 변경 */
                 color: darkblue /*글자의 색 변경*/
@@ -31,8 +31,12 @@
                 color:brown
             }
 
-            tfoot{
+            tfoot th { /* tXXX(thead, tbody, tfoor) + 태그종류(th,td) : 해당 tXXX에 명시되어있는 태그들을 따로 뽑아서 디자인을 변경할 수 있음 */
                 background-color: red;
+            }
+
+            tfoot td {
+                background-color: pink;
             }
         </style>
 
