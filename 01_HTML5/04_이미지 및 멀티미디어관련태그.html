@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+
+        <title>이미지 및 멀티미디어관련태그</title>
+        <meta charset="UTF-8">
+        <meta name="generator" content="VSCode">
+        <meta name="author" content="eunyoung">
+        <meta name="description" content="이미지 및 멀티미디러 관련 태그 공부하는 문서">
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> 란?
+             IE 계열에서 버전을 명시하기 위해 사용하는 메타태그
+             즉, 코드 제작자가 "이 페이지는 IE브라우져에서 렌더링 될 때 어떤어떠한 버전에서 보여져야합니다."라는 것을 명시하는 태그 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- viewport : 스마트기기 상에서, 최초에 페이지를 로딩할 때 확대정도, 최대 확대비율, 최소 확대비율 등을 다루는 태그
+                        무선을 위한 디자인을 무섬에서 최적화 되게 보여줄 수 있다.   -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <body>
+
+        <h1>이미지 관련 태그</h1>
+
+        <!-- <img> : 종료태그가 없음 => <img 속성>으로 정의함 
+             이미지는 자동 줄바꿈이 안되므로 <br>을 통해서 줄바꿈을 해주어야함 
+            
+            <img src="삽입하고자하는 이미지의 경로" / alt="이미지의 설명문구" (생략가능)
+                 / width="이미지의 가로길이(px/%)" height="이미지의 세로길이(px/%)" (생략가능)
+        -->
+
+        <img src="resources/image/flower1.jpg" width="200px" height="300px">
+        <img src="resources/image/flower2.jpg" width="40%" height="auto">
+        <!-- 고정길이 (px) : 화면사이즈가 조정이 되도 이미지의 크기는 변동없음
+             가변길이 (%) : 화면사이즈가 조정되면 이미지의 크기가 화면사이즈의 맞게 조정됨 -->
+
+        <h3>*alt란?</h3>
+        <p>
+            - 시각장애인분들을 위한 스크린리더(화면낭독기)에서 사진에 대한 설명을 읽어주는 문구<br>
+            - 사진의 경로가 잘못되거나 이미지를 제대로 표현할 수 없는 경우 대체 텍스트의 용도로도 작성<br>
+        </p>
+
+        <img src="resources/image/forest1.jpg" alt="숲 사진입니다." width="500px"><br>
+        <img src="resources/image/forest3.jpg" alt="숲 사진입니다."><br>
+        <!-- 평소에는 alt의 텍스트가 보여지지 않다가 이미지의 경로를 잘못지정하거나 삭제된경우 보여짐 -->
+        <br><br>
+
+        <hr>
+        <h1>멀티미디어 관련 태그</h1>
+
+        <h3>오디오 관련 태그</h3>
+
+        <!--
+            <audio></audio> 시작+종료 태그 존재 => 시작 태그에만 속성값을 작성함!!!
+
+            <audio src="삽입하고자하는 오디오의 경로" controls / autoplay / loop ></audio>
+
+            controls : 재생도구 출력 여부를 나타내는 도구(속성값은 동일하므로 생략가능)
+            autoplay : 웹 페이지를 켰을 때 자동 재생하도록 설정
+                       크롬, 모바일 제대로 적용안됨 but 인터넷 익스플로어는 적용됨
+                       (크롬은 autoplay muted라는 속성값으로 제시해야함)
+            loop : 반복 재생 여부 지정
+
+            꼭 브라우저에서 확인하기!!
+        -->
+
+        <audio src="resources/audio/major.mp3" controls autoplay loop></audio>
+
+        <hr>
+
+        <h3>비디오 관련 태그</h3>
+
+        <!--
+            오디오 관련 태그와 속성값 동일
+            <video src="삽입하고자하는 비디오의 경로" controls autoplay loop
+                   width="가로길이" height="세로길이" poster="썸네일이미지경로"></video>
+        -->
+
+        <video src="resources/video/video1.mp4" controls autoplay muted loop width="80%" height="100%"></video>
+
+        <!-- 다른 웹페이지에 있는 비디오도 소스코드를 붙여서 페이지내에 삽입가능 -->
+        <iframe width="800" height="500" src="https://www.youtube.com/embed/x93bn7dGN3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+    </body>
+    
+    
+</html>

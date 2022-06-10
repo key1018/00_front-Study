@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="eunyoung">
+    <meta name="description" content="영역관련태그를 공부하는 문서">
+    <meta name="generator" content="VSCode">
+    <title>영역관련태그</title>
+
+    <style>
+        
+        div {background-color: yellow;}
+        span {background-color: skyblue;}
+        .blind {background-color: white;}
+        th{background-color: burlywood; color: darkolivegreen;}
+        .presentation {background-color: white;}
+        
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 블럭요소 : 한 줄 단위로 영역을 차지함
+                    줄바꿈이 적용되어 이미 존재하는 태그의 다음중에 영역 잡힘
+                    (h관련, p, pre태그, "div", ....)
+                    => 한 줄 단위로 영역을 차지하기 때문에 그 안에서 가운데 정렬가능
+                    ex: <h1 text-align="center"></h1>
+        
+        인라인요소 : content영역에 해당하는 부분만 영역을 차지하는 요소
+                    줄바꿈이 적용되지 않기 때문에 <br>을 따로 적용해야함
+                    (b, mark, s, img, "span", ...)
+                    => 글자 내용 단위로 영역을 차지하기 때문에 그 안에서 가운데 정렬 불가능
+                    <b text-align="center"></b> => 불가능!!    
+    -->
+
+    <h1>영역 관련 태그</h1>
+
+    <h2>* div태그와 span태그의 차이점1 : 줄바꿈 적용 유무</h2>
+
+    <h3>- div태그</h3>
+
+    <div>div태그1</div> <div>div태그2</div>
+    <div>div태그3</div>
+    <!-- 따로 <br>을 제시하지 않아도 자동으로 줄바꿈이 적용됨 -->
+
+    <h3>- span태그</h3>
+
+    <span>span태그1</span>  <span>span태그2</span>
+    <span>span태그3</span>
+    <!-- 줄바꿈이 적용되지 않음 -->
+    <br><br>
+
+    <span>span태그1</span><br>  <span>span태그2</span><br>
+    <span>span태그3</span><br>
+    <!-- 따로 <br>을 제시해야 줄바꿈이 적용됨 -->
+
+    <h2>* div태그와 span태그의 차이점2 : 영역 지정 방식</h2>
+
+    <h3>- div태그 : 전체 사각형 박스로 영역을 지정</h3>
+
+   <div style="background-color:violet">
+        내는 피고, 내려온 방황하여도, 하였으며, 없으면 것이다. 부패를 이상의 많이 공자는 심장은 귀는 있음으로써 피다. 인류의 현저하게 많이 가치를 힘있다. 생명을 청춘은 구하기 얼마나 끓는 찾아 이것을 대한 힘있다. 공자는 이는 밝은 인생의 더운지라 튼튼하며, 길지 그들에게 봄바람을 뿐이다. 끓는 이것을 하여도 것은 날카로우나 속에서 아니다. 능히 불러 미묘한 아름다우냐?
+   </div>
+
+   <br><br>
+
+   <h3>- span태그 : 각 문장 단위로 영역을 지정</h3>
+
+   <span style="background-color:violet">
+    내는 피고, 내려온 방황하여도, 하였으며, 없으면 것이다. 부패를 이상의 많이 공자는 심장은 귀는 있음으로써 피다. 인류의 현저하게 많이 가치를 힘있다. 생명을 청춘은 구하기 얼마나 끓는 찾아 이것을 대한 힘있다. 공자는 이는 밝은 인생의 더운지라 튼튼하며, 길지 그들에게 봄바람을 뿐이다. 끓는 이것을 하여도 것은 날카로우나 속에서 아니다. 능히 불러 미묘한 아름다우냐?
+   </span>
+
+   <br><br>
+   <hr>
+
+   <!-- div안에 table을 만들고 span 넣기-->
+
+   <div class="table">
+
+    <span class="blind"><b>테이블 샘플</b></span><br>
+    <caption>임시 테이블</caption>
+    
+    <table class="presentation">
+
+        <tr>
+            <th colspan="3" height="12">도시사진</th>
+        </tr>
+
+        <tr>
+            <td><img src="resources/image/city3.jpg" width="100%"></td>
+            <td><img src="resources/image/city2.jpg" width="100%"></td>
+            <td><img src="resources/image/city1.jpg" width="100%"></td>
+        </tr>
+
+        <tr>
+            <td height="12"></td>
+        </tr>
+
+    </table>
+
+    <figure>
+        <figcaption>div와 span이 들어간 테이블 샘플</figcaption>
+    </figure>
+
+   </div>
+
+   <br><br>
+
+   <hr>
+
+   <h1>iframe</h1>
+
+   <p> 웹 문서 안에 다른 웹 문서를 포함하는 태그 </p>
+
+   <!-- <iframe src="삽입하고자하는 다른 웹 문서의 경로" frameborder="테두리두께"></iframe> 
+        소스코드를 복사하여 다른 웹사이트의 동영상도 삽입가능 -->
+
+    <iframe src="03_표관련태그.html" frameborder="0" width="80%" height="800"></iframe>
+
+    <iframe width="800" height="500" src="https://www.youtube.com/embed/x93bn7dGN3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <br><br>
+</body>
+
+</html>
