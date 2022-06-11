@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자관련태그~입력양식태그 연습</title>
+
+    <style>
+        /* a:link => 밑줄 효과 */
+        #emoji:link { color: red; }
+
+        #naver:link { color: green; }
+
+        a:link { color: royalblue; }
+
+        /* a:visited => 이미 방문했으면 색 변경 */
+        #naver:visited { color: pink; }
+
+        /* a:hover => 마우스 올렸을 때 색 변경 */
+        #naver:hover ,a:hover, #emoji:hover { color: orange;}
+
+        /* a:active => 클릭했을 때 색 변경*/
+        a:active { color: violet;}
+        
+    </style>
+</head>
+<body>
+
+    <h1>이모지</h1>
+
+    <p style="font-size:29px">
+        &#128515; &#128516; &#128152; 
+    </p>    
+
+    <!-- 이미지로 링크 연결하기 -->
+    <p><a href="http://naver.com" id="emoji" target="_blank"><span>&#128154;</span></a></p>
+
+    <hr>
+
+    <h1>a 관련 link태그들</h1>
+
+    <h3>a 태그 : 링크 글씨 색</h3>
+    <p><a href="http://naver.com" id="naver" target="_blank">NAVER</a></p>
+    <p><a href="https://www.w3schools.com/html/html_links_colors.asp" target="_blank">HTML_COLORS</a></p>
+
+</body>
+
+</html>
