@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="VSCode">
+    <title>종합실습문제2</title>
+</head>
+
+<body>
+    <form action="test.do">
+
+        <fieldset>
+
+            <legend>납품자 정보</legend>
+
+            <ol>
+                <li>
+                    납품자명 : <input type="text" placeholder="name" required> <br><br>
+                </li>
+
+                <li>
+                    email : <input type="email" placeholder="email" required> <br><br>
+                </li> 
+
+                <li>
+                    홈페이지 : <input type="url" placeholder="http://" required> <br>
+                </li>
+
+
+            </ol>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+
+            <legend>납품 정보</legend>
+
+            <ul>
+                <li>
+                    상품명 : <input type="text" name="pName" required> <br><br>
+                </li>
+
+                <li>
+                    납품수량 : <input type="number" name="amount" placeholder="최소100" min="100"> <br><br>
+                </li>
+
+                <li>
+                    납품등급 : <input type="range" name="level">  <br><br>
+                </li>
+
+                <li>
+                    기타사항 : <textarea name="want" id="" cols="30" rows=""></textarea> 
+                </li>
+
+            </ul>
+
+        </fieldset>
+
+        <br>
+
+        <input type="submit" value="send message">
+
+    </form>
+    
+</body>
+
+</html>
