@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+
+    <style>
+
+
+        #id-h1 { /* 아이디 선택자 */
+            background-color: beige;
+            color: gray;
+        }
+
+        .class-h1 { /* 클래스 선택자 */
+            background-color: orange;
+        }
+
+        h1 { /* 태그 선택자(우선순위 제일 낮음) => 위에서 아래로 css가 적용됨에도 불구하고 우선순위가 제일 낮아서 반영 x */
+            background-color: aquamarine !important;
+             /* 태그 선태자의 우선순위가 제일 낮음에도 불구하고 !important를 부여해서
+                강제로 스타일 적용 가능 => 많이 사용하는 것은 좋지 않다! */
+            color: yellow;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+        <!-- 인라인스타일 
+         => 우선순위에 의해서 아이디 선택자의 스타일 취소되고 인라인스타일이 반영됨-->
+    <h1 id="id-h1" class="class-h1" style="background-color:purple; color:pink;">선택자 우선순위</h1>
+    <p>
+        기본적으로 css는 위에서부터 아래로 적용됨 <br>
+        동일한 요소를 다양한 선택자로 선택해서 css가 부여된 경우 우선순위에 따라서 적용됨 <br>
+        태그선택자 -> 클래스선택자 -> 아이디선택자 -> 인라인스타일방식 -> !important (강제로 스타일 반영)
+    </p>
+
+
+    
+</body>
+
+</html>
