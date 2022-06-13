@@ -312,6 +312,106 @@
 
     </form>
 
+
+    <h2>추가적인 input태그의 타입</h2>
+
+    <form action="test.do">
+
+     <h3>type="color"</h3>
+
+     <p>색상을 선택할 수 있는 요소</p>
+
+     색상 선택 : <input type="color" name="colors">
+
+     <br>
+
+     <h3>type="file"</h3>
+     <P>- 첨부하고자하는 파일을 선택할 수 있는 input요소</P>
+
+     첨부파일 : <input type="file" name="uploadFile">
+     <!-- key값 + 선택한 파일의 '파일명'이 넘어감 -->
+
+     <br>
+
+     <h3>type="hidden"</h3>
+     <p>
+          - 특정값을 사용자에게 직접 입력받지 않고, 화면에 노출시키지 않고, 근데 넘기고하는 값이 있는 경우
+          &lt; input type="hidden" &gt; 요소를 활용하여 숨겨놓은 뒤 값을 넘길 수 있다. 
+          단, 입력할 당시 넘기고자하는 key값 + value값을 함께 작성해야 한다.
+     </p>
+
+     <input type="hidden" name="hide" value="awesome"> 
+
+     <br><br>
+
+     <h3>input type="submit | reset | button"</h3>
+     <p>
+          - submit : 입력값을 넘기고자 할 떄 사용 value="제출" (submit타입의 기본값) <br>
+          - reset : 입력값을 초기화하고자 할 떄 사용 value="초기화" (reset타입의 기본값) <br>
+          - button : 클릭만 가능 value값은 직접 명시해야함     
+     </p>
+
+     <input type="submit">
+     <input type="reset">
+     <input type="button" value="일반 버튼">
+
+     <h3>button [type="submit | reset | buttion"] </h3>
+
+     <p>
+          - 문구가 자동으로 적용되지 않으므로 반드시 시작과 종료태그 사이에 문구를 작성해야함 <br>
+          - 기본값 : type="submit" 이므로 타입 명시는 필수이다 <br>
+          - CSS면에서 &lt; input type="button" &gt; 보다 &lt;button&gt; &lt;/button&gt; 타입에서 더 다양한 스타일이 가능하다
+       </p>
+
+     <button type="submit">제출</button>
+     <button type="reset">초기화</button>
+     <button type="button">일반 버튼</button>
+
+    </form>
+
+    <hr>
+
+    <h2>* select태그와 option태그</h2>
+    <p>
+          - 사용자에게 직접 키보드로 값을 입력받는게 아니라 내가 제시한 여러개의 옵션(목록)들 중에서 선택할 수 있게끔 제공하고자 할 때 <br>
+          - 제출시 현재 선택된 option값이 넘어감 <br>
+            각각의 option에 value값을 명시하지 않았을 경우 content영역 (시작태그와 종료태그 사이)의 값이 넘어감(사용자에게 보여지는 값)<br>
+            value값을 명시했을 경우 value값이 넘어감 <br>
+            => value속성을 따로 명시해서 실제로 넘기는 값을 value값으로 지정할 수 있음(사용자에게 안보여짐)
+    </p>
+
+    <form action="test.do">
+
+     <select name="national">
+
+          <option value="ko">한국</optionv>
+          <option value="us">미국</option>
+          <option value="cn">중국</option>
+          <option value="en">영국</option>
+          <option value="none" selected>선택안함</option> <!-- selected : 옵션들 중에서 미리 선택되어 있도록 설정할 수 있음-->
+
+     </select>
+
+     <h4>HTML5에서 새로 추가된 기능 : dataList</h4>
+     <p>- 사용자에게 직접 키보드로 값을 입력받을 수도 있고 목록에서 선택받을 수도 있음(멀티기능 가능)</p>
+
+     좋아하는 색상 : 
+     <input type="text" name="color" list="colorList" placeholder="색상을 입력하세요.">
+     <datalist id="colorList">
+
+      <!-- value속성을 쓰고자한다면 반드시 작성해야함! => value="" 만 작성했을시 선택불가능하게 뜸 
+           value값과 시작+종료사이에 문구를 작성하면 사용자가 선택시 value+목록들을 같이 보여짐 => 전송되는 값은 value값으로 전송됨 -->
+
+          <option value="red"></option>
+          <option value="blue"></option>
+          <option value="black"></option>
+     </datalist>
+
+     <input type="submit">
+     <button type="reset">초기화</button>
+
+    </form>
+
 </body>
 
           <br><br>
