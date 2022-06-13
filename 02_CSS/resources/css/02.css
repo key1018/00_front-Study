@@ -1,0 +1,154 @@
+/* css를 문서를 만듬으로써 <style> 태그가 자동으로 적용되어있음 */
+h2 { color: red;}
+
+/* 1. 속성 선택자 ------------------------------------------------- */
+
+/* div요소들 중 name 속성값이 name1과 "일치"하는 요소(포함되도 반영x) */
+div[name=name1] { background-color: pink;}
+
+/* div요소들 중 name 속성값이 name1이 "포함"되어있는 요소
+    ~= : 공백으로 구분하며 단어로써 구분함 => 일부 키워드로 구분 불가능! */
+div[ /*name~=name => 키워드로 구분x */ 
+    name~=name1] { background-color: orangered;}
+
+/* *div요소들 중 class속성값이 class로 "시작"하는 요소 
+    != '-'를 기준으로 구분하며 단어로써 구분함 => '-'이전까지의 단어를 기술해야됨
+    class명이 classdiv인경우 : 스타일 반영안됨 */
+div[class|=class] { color: red;}
+
+/* div요소들 중 name속성값이 na로 "시작"하는 요소(일부 키워드만을 작성해서 그것으로 시작하는 요소) */
+div[name^=na] {background-color: yellow; margin:5px; padding:15px }
+
+/* div요소들 중 class속성값이 ss로 "끝"나는 요소 */
+div[class$=ss] { color: blue; font-size: 20px;}
+
+/* div요소들 중 class속성값에 i가 "포함"되어있는 요소(키워드 요소) */
+div[class*=i] { background-color: greenyellow;}
+
+/* class속성값이 div-class인 요소들 중 name속성값에 name3가 포함되어있는 요소 */
+.div-class[name~=name3] { font-weight: 900;}
+
+/* 2. 자손 선택자와 후손 선택자 ------------------------------------------------------*/
+
+/* 아이디가 test1인 요소의 자손들 중 h4요소만 선택 
+    #test1>* 이면 id가 test1인 요소들의 모든 자손들이 적용됨    */
+#test1>h4{ /* 자손선택자를 활용하면 해당 자손의 후손인 <p>까지 스타일이 반영됨 */
+    background-color: purple;
+}
+
+/* 아이디가 test1인 요소의 ul 자손들 중 li요소들만 선택 */
+#test1>ul>li { /* 우선순위가 더 높음 */
+    background-color: orchid;
+}
+
+/* 아이디가 test1인 요소의 후손들 중 li요소 선택 */
+#test1 li {
+    background-color: gray;
+    color: goldenrod;
+}
+
+/* 3. 동위선택자 -----------------------------------------------*/
+
+#div1 + #div2 { /* 2번째 id인 div2만 선택됨 */
+    background-color: orangered;
+}
+
+#div1 + ol { /* 스타일 반영X => 진짜 "바로 뒤"에 있는 요소가 아니기 때문에 */
+    background-color: teal;
+}
+
+p + ol + ul { /* 중첩으로도 이용가능 => p뒤에 ol뒤에 ul요소에 스타일이 적용됨 */
+    color: gray;
+}
+
+#div2 ~ p { /* div2뒤에 있는 "모든" p의 요소들에게 스타일이 적용됨 */
+    color: royalblue
+}
+
+#div1 ~ div{ /* div1뒤에 있는 "모든" div의 요소들에게 스타일이 적용됨 */
+   /* background-color: aquamarine; */
+}
+
+/* 4. 반응선택자 ------------------------------------------*/
+
+.area{
+    background-color: yellow;
+    padding: 30px;
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor:pointer;
+}
+
+/* active 속성 적용 : 선택하면 스타일 변경 적용 */
+#active-test:active { background-color: pink; color: red }
+/* hover 속성 적용 : 마우스를 올려놓으면 스타일 변경 적용 
+   단, 현재 선택된 요소에 반영 => 즉, 자손요소인 button 요소에는 스타일부여 X */
+#hover-test:hover { background-color: greenyellow; color:aqua}
+
+/* hover-test의 자손 속성에 스타일 부여하기 */
+#hover-test:hover>button {
+    background-color: lightcoral; color: purple;
+}
+
+/* a의 링크에서 방문하지 않은 사이트의 스타일을 적용하기 */
+#w3s:link {
+    color: peru;
+    text-decoration: none; /* 밑줄 x */
+}
+
+/* a의 링크에서 방문한 사이트의 스타일을 적용하기 */
+#w3s:visited {
+    color: gray;
+    text-decoration: underline; /* 밑줄 o */
+}
+
+#w3s:hover {
+    text-decoration: underline;
+}
+
+/* 5. 상태선택자 ------------------------------------------ */
+
+input[type=checkbox]:checked{
+    width: 30px;
+    height: 30px;
+    /*  font-size:20px; /* label문구의 글꼴 크기에 반영 안됨 => checkbox인 input요소에만 반영됨
+                          => 기본적으로 해당 선택된 요소 자체에 스타일 반영 */
+}
+
+input[type=checkbox]:checked+label{
+    /* 동위 선택자를 활용하여 checkbox뒤에있는 label문구에 글꼴 크기 변경요소 반영하기 */
+    font-size:20px;
+}
+
+label[for=grape] {
+    color:purple;
+    font-weight: bolder;
+}
+
+/* input에서 name중 fr가 포함된 label 요소들에게 스타일 적용 */
+input[name^=fr]:checked+label {
+    color: greenyellow;
+    font-weight: bold;
+}
+
+/* input에서 id에 user가 포함되어있는 요소들에게 스타일 적용*/
+input[name^=user]:focus {
+    background-color: hotpink;
+}
+
+/* input요소들 중 활성화 상태의 스타일 변경 */
+input[name=userId]:enabled {
+    background-color: goldenrod;
+}
+
+/* input에서 Id로 끝나는 요소에게 스타일 적용*/
+input[name$=Id]:focus {
+    background-color: green;
+    color: wheat;
+}
+
+/* input요소들 중 비활성화 상태의 스타일 변경 */
+input:disabled {
+    background-color: gray;
+}
