@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글꼴관련스타일</title>
+
+    <!-- 외부 웹에 있는 글꼴들 복붙하기 
+         link를 복붙하면서 외부 글꼴들 적용가능 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+    <style>
+        #ff1 { font-family:궁서체; }
+        /* 글꼴명에 공백이 있는 경우 ''로 묶어서 적용 */
+        #ff2 { font-family:'고딕체';}
+        /* 글꼴은 여러개 기술 가능 
+        => 제시한 글꼴이 존재하지 않을 경우 1->2->3 순서에 따라 존재하는 글꼴이 적용됨 */
+        #ff3 { font-family:'은영체', '사랑체', '궁서체'}
+
+        /* 외부 웹 글꼴 반영하기 */
+        #ff4 {
+            font-family: 'Nanum Brush Script', cursive;
+            /* font-family: 'Jua', sans-serif;  */
+            /* font-family: 'Black Han Sans', sans-serif; */
+            font-size: 25px;
+        }
+
+        /* 고정크기의 글자크기 변경 */
+        #fs1 {
+            font-size: 30px;
+        }
+
+        /* 가변크기(em)의 글자크기 변경 */
+        #fs2 {
+            font-size: 2.5em; /* 부모요소의 폰트 크기에서 n배 커지겠다 => 2.5em : 2.5배 커지겠다*/
+        }
+
+        /* 가변크기(%)의 글자크기 변경 */
+        #fs3 {
+            font-size: 300%; /* 부모요소의 폰트 크기에서 n.n배 커지겠다 => 250% : 2.5배 커지겠다 */
+            /* 100%는 1배이다. */
+        }
+
+        .fw2 { font-weight:bold;} /* 굵은 글꿀로 변경 */
+        #fw3 { font-weight:/*900*/bolder;} /* 900==bolder : 애초에 굵은 글꼴로 변경 */
+        #fw4 { font-weight:/*100*/lighter;} /* 100==lighter : 얇은 글꼴로 변경 */
+        
+    </style>
+
+</head>
+
+<body>
+    
+    <h1>글꼴 관련 스타일 속성(font~)</h1>
+    <h3>font-family : 글꼴을 지정할 때 사용</h3>
+    <pre>선택자 { font-family: 글꼴명, [글꼴명, .. ] }</pre>
+
+    <p id="ff1">글꼴 선택자1</p>
+    <p id="ff2">글꼴 선택자2</p>
+    <p id="ff3">글꼴 선택자3</p>
+    
+    <h3>* 외부 웹 폰트 사용하는 방법</h3>
+
+    <p>
+        웹 폰트 제공사이트 : 
+        <a href="http://fonts.google.com" target="_blank">구글 웹 폰트 사이트</a>
+    </p>
+
+    <p id="ff4">안녕하세요. 반갑습니다. 글꼴연습해봅시다. Hello CSS</p>
+
+    <hr>
+
+    <h3>font-size : 글꼴의 크기를 변경할 때 사용</h3>
+    <pre>선택자 { font-size : px | em | % } </pre>
+
+    <ol>
+        <li id="fs1">고정크기의 글자(px)</li>
+        <li id="fs2">가변크기의 글자(em)</li>
+        <li id="fs3">가변크기의 글자(%)</li>
+    </ol>
+
+    <h3>font-weight: 글꼴의 굵기를 표현할 때 사용</h3>
+    <p>선택자 { font-weight: bold | bolder | ligher | 100~900; } </p>
+
+    <ul>
+        <li id="fw1">원래 굵기</li>
+        <li class="fw2">굵은 글꼴로 변경</li> <!-- bold -->
+        <li id="fw3">원래 굵기보다 더 굵게</li> <!-- bolder == 900 -->
+        <li id="fw4">원래 굵기보다 더 가늘게</li> <!-- lighter == 100 -->
+    </ul>
+
+    <hr>
+
+    <h3>font-variant : 영문텍스트를 작은 대문자로 변경할 때 사용</h3>
+    <pre>선택자 { font-variant:small-caps; }</pre>
+
+    <p>I LOVE YOU</p>
+    <!-- 소문자로 표현한 값이 작은 대문자로 변경됨 -->
+    <p style="font-variant:small-caps">i love you</p>
+
+    <hr>
+
+    <h3>font-style : 텍스트 문구를 기울여서 표현하고자 할 때 사용</h3>
+    <pre>선택자 { font-style:italic|oblique;}</pre>
+
+
+    <p style="font-style:italic">italic 기울임 글꼴(원래부터 기울어져있는 글꼴)</p>
+    <p style="font-style:oblique">oblique 원래글자를 기울인셈(기울여지지않은 글꼴을 기울이게함)</p>
+
+
+</body>
+
+</html>
