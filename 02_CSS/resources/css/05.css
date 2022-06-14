@@ -1,0 +1,61 @@
+/* 05_텍스트관련스타일 연결 CSS 문서*/
+
+pre{
+    font-family:고딕체;
+}
+
+#c {
+    color: hotpink; /* 색상명 지정 */
+    color: #669834; /* 16진수로 지정 */
+    color: rgb(200,102,204); /* rgb로 지정 */
+    color: rgb(200,102,204, 0.4); /* rgba로 지정(a는 투명도 조절 : 0~1) */
+    color: hsl(260, 67%, 79%); /* h:색상값(0~360), s:채도(%), l:명도(%) */
+    color: hsla(259, 66%, 79%, 0.747); /* 투명도 조절 가능 */
+}
+
+#td1 { text-decoration: overline; }
+#td2 { text-decoration: line-through; }
+#td3 { text-decoration: underline; }
+#td4 { text-decoration: none; }
+
+#tt1 { text-transform: uppercase; } /* 영문자 모두 대문자로 변경 */
+#tt2 { text-transform: lowercase; } /* 영문자 모두 소문자로 변경 */
+#tt3 { text-transform: capitalize;} /* 영문자에서 시작하는 문자만 대문자로 변경 */
+
+/* text-shadow */
+.shadow{ font-weight: 900; font-size: 60px;}
+
+#ts1 {
+    text-shadow: 5px 5px red; /* 오른쪽, 아래쪽 : 양수 */
+    /* 번짐정도 생략시 선명한 그림자, 색상 생략시 글자색깔과 동일 */
+}
+
+#ts2 {
+    text-shadow: -5px -5px 10px hotpink; /*왼쪽, 위쪽 : 음수 */
+}
+
+#ts3 {
+    text-shadow: 0px 0px 20px blue; /* 가로,세로 거리 0일때 현재 자리에서 그림자가 짐 */
+}
+
+#ts4 {  /* ,를 통해 그림자를 여러개를 나열할 수 있다 */
+    text-shadow: 0px -5px 12px yellow, 0px -10px 13px orange, 0px -15px 18px orangered, 0px -20px 26px red;
+}
+
+/* text-align, line-height */
+#left {
+    text-align:left; line-height: 20px;
+}
+
+#justify{
+    text-align:justify; line-height: 3em;
+}
+
+#right {
+    text-align:right; line-height: 150%;
+}
+
+#center {
+    text-align: center;
+}
+

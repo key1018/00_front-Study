@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 관련 스타일</title>
+
+    <link rel="stylesheet" href="resources/css/05.css">
+</head>
+
+<body>
+
+    <h1>텍스트 관련 스타일</h1>
+    <h3>color : 텍스트 색상을 지정</h3>
+    <pre id="c">
+        선택자 {
+            color: 색상명 | 16진수 | rgb(x,x,x) | rgba(x,x,x,x) | hsl(x,x,x) | hsla(x,x,x,x);
+        }
+    </pre>
+
+    <h3>text-decoration : 텍스트에 줄을 긋거나 줄을 없앨 때 사용</h3>
+
+    <pre>
+        선택자 {
+            text-decoration : underline | overline | line-through | none;
+        }
+    </pre>
+
+    <ul>
+        <li id="td1">텍스트 영역 위에 줄 긋기</li> <!-- overline -->
+        <li id="td2">텍스트 영역 중간에 줄 긋기(취소선)</li> <!-- line-through -->
+        <li id="td3">텍스트 영역 아래에 줄 긋기</li> <!-- underline -->
+        <a id="td4" href="https://www.w3schools.com/">w3schools로 이동하기</a> <!-- 텍스트 줄 없애기 -->
+    </ul>
+
+    <h3>text-transform : 영문 텍스트의 대소문자 변환시 사용</h3>
+
+    <pre>
+        선택자 {   <!-- 변환처리는 DB와 가장 가까운 것을 활용하는 것이 빠르다 -->
+            text-transform : uppercase | lowercase | capitalize;
+        }
+    </pre>
+
+    <ul>
+        <li id="tt1">hello html</li> 
+        <li id="tt2">HELLO HTML</li>
+        <li id="tt3">hello thml</li>
+    </ul>
+
+    <hr>
+
+    <h3>text-shadow : 텍스트에 그림자 효과를 줄 때 사용</h3>
+    <pre>
+        선택자 {
+            text-shadow : 가로거리(x) 세로거리(y) [번짐정도] [색상];
+        }
+    </pre>
+
+        <!-- div>span.shadow#ts${HTML} * 3 -->
+        <div>
+            <span class="shadow" id="ts1">HTML</span> <br><br>
+            <span class="shadow" id="ts2">HTML</span> <br><br>
+            <span class="shadow" id="ts3">HTML</span> <br><br>
+            <span class="shadow" id="ts4">HTML</span> <br><br>
+        </div>
+
+        <hr>
+
+        <h3>text-align : 텍스트 정렬할 때 사용</h3>
+        <h3>line-height: 줄 간격 조절할 때 사용</h3>
+        <pre>
+            선택자 {
+                text-align: left(기본값) | justify(양쪽정렬) | right | center(가운데정렬);
+                line-height: px | em | %;
+            }
+        </pre>
+
+        <h4>왼쪽정렬(left, 기본값)</h4>
+        <p id="left">이상은 것이 석가는 군영과 이상이 보이는 말이다. 대고, 충분히 방지하는 하여도 되는 사랑의 같으며, 우는 같은 것이다. 
+            커다란 노래하며 그림자는 보라. 있으며, 실로 희망의 고행을 피가 사막이다.  
+            피에 새 얼마나 그들의 두기 인간의 얼음이 소리다.이것은 이것이다. 산야에 같이, 역사를 자신과 우리 것은 인간이 위하여서</p>
+
+        <h4>양쪽정렬(justify)</h4>
+        <p id="justify">이상은 것이 석가는 군영과 이상이 보이는 말이다. 대고, 충분히 방지하는 하여도 되는 사랑의 같으며, 우는 같은 것이다. 
+            커다란 노래하며 그림자는 보라. 있으며, 실로 희망의 고행을 피가 사막이다.  
+            피에 새 얼마나 그들의 두기 인간의 얼음이 소리다.이것은 이것이다. 산야에 같이, 역사를 자신과 우리 것은 인간이 위하여서</p>
+
+        <h4>오른쪽정렬(right)</h4>
+        <p id="right">이상은 것이 석가는 군영과 이상이 보이는 말이다. 대고, 충분히 방지하는 하여도 되는 사랑의 같으며, 우는 같은 것이다. 
+            커다란 노래하며 그림자는 보라. 있으며, 실로 희망의 고행을 피가 사막이다.  
+            피에 새 얼마나 그들의 두기 인간의 얼음이 소리다.이것은 이것이다. 산야에 같이, 역사를 자신과 우리 것은 인간이 위하여서</p>
+
+        <h4>가운데정렬(center)</h4>
+        <p id="center">이상은 것이 석가는 군영과 이상이 보이는 말이다. 대고, 충분히 방지하는 하여도 되는 사랑의 같으며, 우는 같은 것이다. 
+            커다란 노래하며 그림자는 보라. 있으며, 실로 희망의 고행을 피가 사막이다.  
+            피에 새 얼마나 그들의 두기 인간의 얼음이 소리다.이것은 이것이다. 산야에 같이, 역사를 자신과 우리 것은 인간이 위하여서</p>
+
+
+
+
+
+    
+</body>
+
+</html>
