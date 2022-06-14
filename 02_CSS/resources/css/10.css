@@ -1,0 +1,36 @@
+/* 10_레이아웃관련스타일 연결하는 css문서 */
+
+.display {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    border: 1px solid sienna;
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+
+#red { background-color: red;}
+#blue {background-color: blue;}
+#yellow { background-color: yellow;}
+#pink { background-color: pink;}
+#purple { background-color: purple;}
+
+/* class="inline"에서 div(블럭요소)들을 인라인요솔로 변경하기 */
+.inline {
+   /* div들이 옆으로 배치됨 => 단, width와 height가 적용되지 않음 
+      가로, 세로 지정은 블록요소 특징 */
+    display: inline;
+}
+
+/* class="block*에서 span(인라인요소)들을 블럭요소로 변경하기 */
+.block {
+    /* 인라인요소로 옆으로 배치 => div요소로 한 줄 씩 배치됨 
+       가로, 세로 지정할 수 있는 블럭요소 가짐 */
+    display: block;
+}
+
+/* class="inline-block*에서 span(인라인요소)를 인라인요소 + 블럭요소로 변경하기 */
+.inline-block {
+    display: inline-block;
+}

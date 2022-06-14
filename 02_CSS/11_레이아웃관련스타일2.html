@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃관련스타일2</title>
+
+    <link rel="stylesheet" href="resources/css/11.css">
+</head>
+<body>
+
+    <h1>배치관련 스타일</h1>
+
+    <h3>position : 상대위치(relative)와 절대위치(absolute)</h3>
+    <p>부모요소(relative)를 기준으로 자식요소(absolute)들의 위치를 조절</p>
+
+    <div class="outer">
+        <!-- 기본적인 배치 : 순서대로 위 아래 -->
+        <div class="positioning" id="test1">첫번째</div>
+        <div class="positioning" id="test2">두번째</div>
+        <div class="positioning" id="test3">세번째</div>
+    </div>
+
+    <h3>position: fixed(고정위치)</h3>
+    <p>스크롤을 내리면 같이 내려옴 ex) 네이버-위로올라가기 버튼</p>
+
+    <div id="fixed-test">위로 올라가기</div>
+
+    <hr>
+
+    <h3>z-index: 요소들을 순서대로 위로 쌓는 속성 </h3>
+    <p>z-index: 숫자px => 숫자의 값이 높을수록 상단에 노출됨 </p>
+
+    <div class="outer"> <!-- position:relative로 정의되어있음 --> 
+     <!-- position:absolute를 하면 요소들이 화면에서 살짝 띄어져있어서 div에서 나와있는 상태임 
+           outer뒤에서 문구를 치면 요소들이 띄어져있기때문에 바로 아래에 입력되므로 <br>을 통해 줄바꿈해야함 -->
+        <div class="z-test" id="z1">요소1</div>
+        <div class="z-test" id="z2">요소2</div>
+        <div class="z-test" id="z3">요소3</div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <h3>visibility : 특정 요소를 보이거나 보이지 않게 하는 스타일 속성 </h3>
+
+    <div class="vis-test" id="first">첫번째 영역</div>
+    <div class="vis-test" id="second">두번째 영역</div> <!-- 화면상에 안보여지게 설정하기 -->
+    <div class="vis-test" id="third">세번째 영역</div>
+    <div class="vis-test" id="fourth">네번째 영역</div>
+
+    <!-- 
+        1. visibility:hidden; => 공간은 차지하고있지만 보이지 않음
+        2. display:none => 보이지않고 공간마저도 사라지게함
+    -->
+
+    <hr>
+
+    <h3>float: left | right</h3>
+    <p>페이지 내의 요소들을 화면으로부터 왼쪽 또는 오른쪽으로 배치하는 속성</p>
+
+
+    <div class="float-test">요소1</div>
+    <div class="float-test">요소2</div>
+    <div class="float-test">요소3</div>
+    <div class="float-test">요소4</div>
+    <div class="float-test">요소5</div>
+
+    <!-- 현재 float요소가 적용된 요소들 둥둥 띄어져있는 상태 => float요소를 제거하자! -->
+    <p>float요소 제거 전</p>
+    <br clear="both"> <!-- clear : float을 취소시키고자 할 때 사용 (띄어져있는 것을 방지함)
+        단, position:absolute는 적용안됨   -->
+    <p>float요소 제거 후</p> 
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
