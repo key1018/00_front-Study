@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록관련스타일</title>
+
+    <link rel="stylesheet" href="resources/css/06.css">
+
+    <style>
+
+        /* id="un-seq" 순서없는 목록의 불릿기호 이미지로 변경 */
+        #un-seq{
+            list-style-image: url('resources/image/visual-studio (1).png');
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <h1>목록 관련 스타일</h1>
+
+    <h3>list-style-type: 불릿기호를 변경시켜줄 때 적용</h3>
+    <h3>list-style-image: 불릿기호를 이미지로 변경하고자 할 때 사용</h3>
+    <h3>list-style-position: 불릿기호의 위치를 조절할 때 사용</h3>
+
+    <pre>
+        선택자 {
+            list-style-type: disc(채워진원) | circle(빈원) | square(네모) | none(불릿기호없음);
+            list-style-image : url('적용시키고자하는 이미지의 경로');
+            list-style-position : inside(기존보다 더 안으로 들어감) | outside(기본값);  
+        }
+    </pre>
+    <!-- list-style-type같은 경우는 목록을 제시할 때 type="1"로 설정하면 간단하다. -->
+
+    <h4>순서없는 리스트</h4>
+
+    <ul id="un-seq">
+        <li>JAVA</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+        <li>Oracle</li>
+        <li>Python</li>
+        <li>C##</li>
+    </ul>
+
+
+    <h4>순서있는 리스트</h4>
+
+    <ol id="seq">
+        <li>JAVA</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+        <li>Oracle</li>
+        <li>Python</li>
+        <li>C##</li>
+    </ol>
+
+</body>
+
+</html>
