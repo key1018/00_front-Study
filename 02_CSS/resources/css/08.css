@@ -1,0 +1,83 @@
+/* 08_테두리관련스타일 연결 css */
+pre{
+    font-family: 고딕체;
+}
+
+div {
+    width:100px;
+    height: 100px;
+    border: solid black;
+}
+
+/* test1 테두리선 대쉬드선으로 변경 */
+#test1 {
+    border-style: dashed;
+    /*위쪽 선만 두껍게 만들기 */
+    border-top-width: 10px;
+}
+
+/* test2 테두리선 점선으로 변경 */
+#test2 {
+    border-style: dotted;
+    border-bottom-width: 10px;
+}
+
+/* test3 테두리선 위에서부터 시계방향으로 원하는 테두리선으로 변경 */
+#test3 {
+    border-style: dashed double solid dotted;
+    border-width: 8px;
+}
+
+/* test4 테두리선 홈이 파져있는 모양으로 변경(groove) */
+#test4 {
+    border-style: groove;
+    border-width: 8px;
+    border-color: lightgray;
+}
+
+/* test5 테두리선 액자모양의 테두리로 변경(ridge) */
+#test5 {
+    border-style: ridge;
+    border-width: 8px;
+    border-color: pink;
+}
+
+/* test6 테두리선 표면 자체가 움푹 페어져있는 모양으로 변경(inset) */
+#test6 {
+    border-style: inset;
+    border-width: 10px;
+    border-color: yellowgreen;
+}
+
+/* test7 테두리선 표면 자체가 앞으로 튀어나와있는 모양으로 변경(outset) */
+#test7 {
+    border-style: outset;
+    border-width: 10px;
+    border-color:aquamarine;
+}
+
+/* test8 테두리선 두께, 스타일, 색상 한 번에 변경하기 */
+#test8 {
+    border: 10px double red;
+}
+
+/* test9에 그림자 효과부여 : 가로거리(x), 세로거리(x), 흐림정도 번짐정도 색상 */
+#test9 {
+    box-shadow: 5px 5px gray;
+}
+
+/* test10의 모서리 둥글게 변경 */
+#test10 {
+    border-radius: 10px;
+    border-bottom-right-radius: 40px; 
+    /* border[-상하위치-좌우위치]-radius: 숫자;로 다르게 변경할 수 있음 */
+}
+
+/* test11 모서리 둥글게해서 원모양으로 변경 */
+#test11 {
+    border-radius: 100px; /* 꼭지점 4개의 모서리 둥글게 만들기 */
+    background-color: olivedrab;
+    border-width: 0.1px;
+    border-color: grey;
+    box-shadow: 5px -5px 10px 5px rgb(63, 88, 11)
+}
