@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인창만들기</title>
+
+    <link rel="stylesheet" href="../화면구조잡기/css/03_로그인창만들기.css">
+
+</head>
+<body>
+
+    <!-- id="content-3" -->
+
+    <div id="content-3">
+
+        <!-- 로그인 정보를 전달하는 form 생성 -->
+        <form action="login.me" id="login-form">
+
+            <!-- ID/PWD입력하는 input 생성-->
+            <div id="login-input">
+
+                <input type="text" id="userId" name="userId" placeholder="아이디 입력" required>
+                <input type="password" id="userPwd" name="userPwd" placeholder="비밀번호 입력" required>
+
+            </div>
+
+            <!-- 로그인 정보 전달하는 div 생성 -->
+            <div id="login-btn">
+
+                <input type="submit" value="로그인">
+
+            </div>
+
+        </form>
+
+        <!-- 회원가입, ID/PWD생성하는 링크영역 div 생성 -->
+        <div id="login-form-etc">
+            <a href="#">회원가입</a>
+            <a href="#">ID/PWD 찾기</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
