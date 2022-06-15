@@ -1,0 +1,30 @@
+div,input,form{box-sizing:border-box; border:1px solid gray;}
+
+/* .wrap 의 크기 변경하기 */
+.wrap{width: 1000px; height: 800px; margin:auto;}
+.warp>div{width:100%;}
+
+/* header의 길이 변경하기 */
+#header{ border:4px solid rgb(161, 18, 18); height:20%;}
+/* header의 div요소들 옆으로 나열하기 */
+#header>div{height:100%; float:left;}
+/* header의 자식요소 넓이 변경하기 */
+#header-1{ width:20%;}
+#header-2{ width:65%;}
+#header-3{ width:15%;}
+
+/* navigator의 길이 변경하기 */
+#navigator{ border:4px solid pink; height:5%;}
+
+/* content의 길이 변경하기 */
+#content{ border:4px solid greenyellow; height:55%;}
+
+/* content의 자식요소 넓이 변경하기 */
+#content>div{height:100%; float:left;}
+
+#content-1{width:15%;}
+#content-2{width:65%;}
+#content-3{width:20%;}
+
+/* footer의 길이 변경하기 */
+#footer{ border:4px solid blue; height: 20%;}
