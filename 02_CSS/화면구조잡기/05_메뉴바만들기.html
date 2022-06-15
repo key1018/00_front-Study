@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴바만들기</title>
+
+    <link rel="stylesheet" href="../화면구조잡기/css/05_메뉴바만들기.css">
+</head>
+<body>
+    
+    <!-- id="navigator" -->
+    <div id="navigator">
+
+    <ul id="navi"> <!-- 모든 li,ul를 감싸는  ul요소 -->
+        <li><a href="#">JAVA</a></li>
+        <li><a href="#">Oracle</a></li>
+        <li><a href="#">Front-end</a>
+            <!-- Front-end에 서브메뉴 추가-->
+            <ul>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">jQuery</a></li>
+            </ul>
+        
+        </li>
+        <li><a href="#">Server</a>
+            <!-- Server에 서브메뉴 추가 -->
+            <ul>
+                <li><a href="#">Servlet</a></li>
+                <li><a href="#">JSP</a></li>
+                <li><a href="#">AJAX</a></li>       
+            </ul>
+        </li>
+        <li><a href="#">Framework</a>
+            <!-- Framework에 서브메뉴 추가 -->
+            <ul>
+                <li><a href="#">MyBatis</a></li>
+                <li><a href="#">Spring</a></li>
+            </ul>
+        </li>
+        
+    </div>
+
+
+</body>
+</html>
