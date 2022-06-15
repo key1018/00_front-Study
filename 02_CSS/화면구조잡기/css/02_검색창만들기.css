@@ -1,0 +1,36 @@
+div,input, form{box-sizing:border-box; border:1px solid red;}
+/* 임시로 form 넓이, 길이 변경 */
+#header-2{width:600px; height:150px;}
+
+/* 검색 input을 header-2의 정가운데로 놓기위한 요소 */
+#header-2{position:relative;}
+/* form 스타일 변경 */
+#search-form{
+    border: 1px solid blue;
+    width:80%;
+    height:30%;
+    position:absolute;
+    margin:auto;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+
+#search-form>input{
+    float:left;
+}
+
+/* 검색어입력하는 input스타일 변경 */
+#search-text{
+    border: 2px solid green;
+    width:80%;
+    height:100%;
+}
+
+/* 검색어 전달하는 input스타일 변경 */
+#search-btn{
+    border: 2px solid orange;
+    width:20%;
+    height:100%;
+}
