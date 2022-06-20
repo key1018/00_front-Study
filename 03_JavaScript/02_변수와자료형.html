@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_변수와 자료형</title>
+</head>
+
+<body>
+
+    <h1>변수와 자료형</h1>
+    <p>
+        자바스크립트에서는 변수 선언시 따로 자료형을 지정하지 않는다. (자바에서의 int, String, char, .. 등의 자료형을 지정 x ) <br>
+        var, let, const를 이용해서 변수를 선언하고 아무 값을 담을 수 있다.(숫자, 문자열, 논리값, 배열, ...) <br>
+        => var, let, const는 변수 선언을 위한 키워드!
+    </p>
+
+
+    <h3>* 자료형</h3>
+    <p>변수에 대입되는 값에 따라서 알아서 자료형 결정됨</p>
+
+    <ul id="ul">
+        <li>String(문자열)</li>
+        <li>number(숫자)</li> <!-- 정수, 실수 나누지 않음 -->
+        <li>boolean(논리값)</li>
+        <li>object(객체)</li> <!-- 문자열, 숫자, 논리값 제외한 모든 것들(h3, p, ul .. 또한 '요소객체'로 포함)-->
+        <li>function(함수)</li>
+        <li>undefined(초기화가 안된 변수)</li>
+    </ul>
+
+    <button onclick="typeTest();">자료형 버튼</button>
+
+    <script>
+
+        function typeTest() {
+
+            var name="홍길동"; // 문자열 제시시 홀따옴표, 쌍따옴표 가능
+            let age = 20;
+            const flag=true;
+            // 변수 선언시 자료형을 따로 제시하지 않고 변수 선언함
+
+            // 자바스크립트에서의 객체 => 리터럴값(원시형값)들을 제외한 모든 것들
+            //                           (배열, 요소, 정규표현식, ... 등등)
+
+            var hobby=['영화','등산','게임'];
+            let user = { // 자바에서의 HashMap같은 존재 => 키 + 밸류 값으로 정의
+                name:'김말똥',
+                age:30,
+                national:'대한민국'
+            };
+
+            // 요소를 가져와서 변수에 담기 (ul요소)
+            let ulEl = document.getElementById('ul'); // 변수 객체 => object타입으로 선언됨
+
+            // 함수타입의 변수 선언(함수타입)
+            var testFn = function() {
+                window.alert('안녕하세요.');
+            }
+
+            // 초기화가 안된 변수 선언
+            let noVal;
+
+            // 변수들 출력
+            // 자료형 확인시 사용하는 함수 : typeof(변수명)
+
+            console.log(name, typeof(name)); // 개발자가 볼 수 있도록 console창에서 출력
+            console.log(age, typeof(age));
+            console.log(flag, typeof(flag));
+            console.log(hobby, typeof(hobby));
+            console.log(user, typeof(user));
+            console.log(ulEl, typeof(ulEl));
+            console.log(testFn, typeof(testFn));
+            console.log(noVal, typeof(noVal));
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>* var, let, const의 차이점</h3>
+    <h4>1) 변수 선언 방법</h4>
+    <button onclick="diffDeclare();">변수선언 클릭</button>
+
+    <h4>2) 스코프(사용가능 범위)</h4>
+    <button onclick="diffScope();">스코프 클릭</button>
+
+    <script>
+
+        function diffDeclare() {
+            
+            // 1) var의 특징 : 중복선언가능(오류발생X => 단점), 재할당 가능
+            //          단점 : 선언한 값이 변질될 수 있음
+            var userId = 'user01';
+            // console.log(userId);
+
+            var userId = 'user02'; // 같은 변수명을 재선언하는 것이 가능하여 값이 변질될 수 있음
+            console.log(userId); 
+
+            // 기존 변수에 새로운 값을 대입하는 올바른 방법 => 변수선언문 제외하고 변수명만 제시한 뒤 값을 바꾼다
+            userId = 'user03';
+            console.log(userId);
+
+            // 2) var의 특징 : 중복선언불가능, 재할당 가능
+            let userPwd='pass01';
+            // console.log(userPwd);
+
+            // let userPwd='pass02';  // 같은 변수명을 재선언할 때 오류를 알려줘서 기존에 제시된 값이 변질될 수 없도록 도와줌
+            // console.log(userPwd);
+
+            // 기존 변수에 새로운 값을 제시하는 올바른 방법
+            userPwd = 'pass02';
+            console.log(userPwd);
+
+            // 3) const의 특징 : 중복선언불가능, 재할당 불가능
+            const birthPlace = "대한민국";
+            console.log(birthPlace);
+
+            // const birthPlace = '미국'; // 같은 변수명을 선언할 떄 오류발생 => 중복선언불가능
+            // console.log(birthPlace);
+
+            // 기존 변수에 새로운 값을 제시하는 올바른 방법
+            // birthPlace='미국';   // const는 상수로 선언 => 재할당불가능
+            // console.log(birthPlace);
+
+            /*
+                var는 자유롭게 변수 선언, 사용할 수 있는 장점이 있지만
+                중복된 변수가 남발될 수 있고 의도치 않게 값이 변경되어있을 수 있음 (중복선언가능 => 가장 큰 문제)
+                => 보완되어서 나온것이 let, const
+            */
+
+        }
+
+        function diffScope() {
+
+            // 1) var의 특징 : function[al] scope == 변수 선언구문이 속해있는 "함수"영역내에서 다 사용가능
+            //                 => function내에서 선언된 변수는 '조건문 안,밖 모두에 쓰여진 변수'라해도 조건문 안, 밖에서 !모두 출력 가능!
+
+            var name = '홍길동'; // 조건문 밖에서 선언된 변수
+            console.log(name); // 조건문 밖에서 출력 가능
+
+            if(true) {
+                console.log(name); // 조건문 밖에서 선언된 변수여도 출력가능
+                var age = 20; // 조건문 안에서 선언된 변수
+            }
+
+            console.log(age); // 조건문 안에서 선언된 변수여도 같은 함수 내에서 선언되었으므로 출력 가능
+
+            for(var i = 0; i < 5; i++){ // for반복문에서 i를 초기화 할 때 자료형이 아닌 변수선언문으로 초기화함
+                console.log(i);
+            }
+
+            // 반복문 밖에서 i를 출력할 때는 i가 5가 되는 순간 종료되므로 '5'가 출력됨
+            console.log(i);
+            
+            console.log('---------------------------'); 
+
+            // 2) let, const의 특징 : block scope == 해당 변수가 선언된 "블럭{}" 내에서만 사용 가능 (자바랑 똑같음)
+
+            let hobby='독서'; // 조건문 밖에서 선언된 변수
+            console.log(hobby); // 조건문 밖에서 출력가능
+
+            if(true){
+                console.log(hobby); // 조건문 안에서 출력가능
+
+                // let
+                let gender='F'; // 조건문 안에서 선언된 변수
+                console.log(gender); // 조건문 안에서 출력가능
+
+                // const
+                const grade = 100;  // 조건문 안에서 선언된 변수
+                console.log(grade); // 조건문 안에서 출력가능
+            }
+
+            // console.log(gender); // 조건문 안에서 선언된 변수는 조건문 밖에서 출력 불가능
+            // console.log(grade); // 조건문 안에서 선언된 변수는 조건문 밖에서 출력 불가능
+
+        }
+
+    </script>
+
+    <br><br><hr>
+
+    <h3>* 변수 선언 위치에 따른 전역변수/지역변수</h3>
+
+    <button onclick="variableLocation();">변수선언위치 클릭</button>
+
+    <script>
+
+            // 전역변수 : 특정함수(function)밖에서 변수 선언(어디서든 사용 가능)
+            var declareVar = 'var 전역변수';
+            let declareLet = 'let 전역변수';
+            const declareConst = 'const 전역변수';
+            declareNone='그냥 전역변수';
+
+            
+            // 특정함수 선언
+            function variableLocation() {
+
+                // // 전역변수 출력 => 특정함수 내에서 출력 가능
+                // console.log(declareVar);
+                // console.log(declareLet);
+                // console.log(declareConst);
+                // console.log(declareNone);
+
+                // 지역변수 : 특정 영역안에서 var, let, const 붙여서 선언된 변수 (전역변수명과 지역변수명은 중복될 수 있다)
+                var declareVar='var 지역변수';
+                let declareLet='let 지역변수';
+                const declareConst='const 지역변수';
+
+                // 지역변수 출력 => 특정함수내에서 전역변수와 지역변수명이 중복될 경우 '지역변수가 우선!'
+                console.log(declareVar);
+                console.log(declareLet);
+                console.log(declareConst);
+
+                console.log('---------------------------');
+
+                // 만약 전역변수로 접근하고자 한다면 window. 또는 this. 을 붙여서 제시
+                // 단! var로 선언된 변수만 가능하다
+
+                // 전역변수 출력 (var)
+                console.log(window.declareVar);
+                console.log(this.declareVar);
+
+                // 전역변수 출력 (let, const)   => 제시한 값이 아닌 undefined로 출력됨
+                console.log(window.declareConst);
+                console.log(this.declareConst);
+                console.log(window.declareLet);
+                console.log(this.declareLet);
+
+                // 특정 함수안에 var, let const를 붙이기 않고 선언한 경우 => 전역변수로 선언됨
+                declareNoVal='전역변수인가?';
+
+                console.log(declareNoVal);
+                console.log(window.declareNoVal);
+                console.log(this.declareNoVal);
+
+                testVal(); // 다른 함수인 test() 함수 호출해서 출력 
+
+            }
+            
+            function testVal() {
+
+                console.log('---------------------------');
+
+                // 다른 함수에서 선언된 전역변수 출력 => 전역변수여서 다른 함수내에서도 출력 가능
+                console.log(declareNoVal);
+
+                // 이외의 전역변수 출력
+                console.log(declareVar);
+                console.log(declareLet);
+                console.log(declareConst);
+                console.log(declareNone);
+                // 전역변수로 출력 => 특정 함수내에서 중복되는 변수명이 있어도 그 함수를 벗어나면 전역변수의 값이 출력됨
+
+            }
+
+    </script>
+
+
+
+</body>
+
+</html>
