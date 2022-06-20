@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_데이터입출력</title>
+
+    <style>
+        .area{
+            border:1px solid black;
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1>자바스크립트 코드로 데이터 입/출력</h1>
+
+    <!--
+        * 자바스크립트 내장 객체
+        - window : 자바스크립트에서의 내장 객체로 "브라우저" 창마다 하나씩 존재하는 객체 => 브라우저 관련 객체
+                   브라우저 창 안에 존재하는 모든 요소들의 최상위 객체로 생략이 가능하다.
+        - document : 웹 문서마다 하나씩 만들어지는 객체 (html문서에 대한 정보를 가지고 있음)
+                    => 생략불가능
+    -->
+
+    <h2>1. 데이터 출력하는 구문</h2>
+    <p>
+        1) [window.]alert("브라우저 알람창에 출력할 문구"); <br>
+        2) [window.]console.log("브라우저 콘솔창엥 출력할 문구"); <br>
+        <!-- 개발자가 볼 수 있도록 console창에 출력 -->
+        3) document.write("화면(문서)상에 출력시킬 문구"); <br>
+        4) 선택한요소.innerHTML | innerText = "요소에 출력할 문구" <br>
+        <!-- 사용자가 볼 수 있도록 화면에 출력-->
+    </p>
+
+    <h3>3) document.write("화면상 출력할 문구")</h3>
+    <button onclick="documentWrite();">화면에 출력</button> 
+
+    <script>
+
+        function documentWrite() {
+
+            // document.write('안녕하세요');
+            // 화면상에 기존에 입력된 모든 것들이 지워지고 출력시키고자하는 '안녕하세요'라는 문구만 화면에 나타남(element요소까지 새로이 작성됨)
+            // document.write('<b>안녕</b> <br> <h1>반가워</h1>');
+            // 출력하고자하는 문구에 html 태그가 있을 경우 해석되어 시작적인 요소로 나타남
+
+            // 하나의 테이블 생성
+            let table = "<table border='1'>";  // 복합대입연산자를 통해 출력할 문구들을 연이을 수 있음
+                table += "<tr>";
+                table += "<th>1</th>";
+                table += "<th>2</th>";
+                table += "</tr> <tr>";
+                table += "<td>HTML</td>";
+                table += "<td>CSS</td>";
+                table += "</tr> </table>";
+
+            document.write(table); 
+
+        }
+
+    </script>
+
+    <br><br>
+
+    <h3>4) 선택한 요소.innerHTML | innerText = '요소에 출력할 문구';</h3>
+        <!-- 사용자가 볼 수 있도록 화면상에 출력 -->
+
+    <div class="area" id="area1">
+        자바스크립트에서 특정 요소(Element) 안의 값(content영역)을 가지고 온다거나<br>
+        변경하고자 할 때 <b>innerHTML | innerText</b>라는 속성에 접근하면 됨
+    </div>
+
+    <button onclick="innerTest();">요소확인</button>
+
+    <script>
+
+        function innerTest() {
+
+            // 위의 div 요소를 가져와서 안에 값을 확인 / 변경
+
+            // div 요소 객체를 가져와서 변수에 담아두기
+            const divEl = document.getElementById('area1');
+
+            // 변수에 담긴 요소가 무엇인지 출력
+            console.log(divEl);
+
+            // 해당 요소 객체의 디렉토 구조(속성들에 대한 정보)
+            console.dir(divEl);
+
+            // 선택한 요소의 속성에 '.'으로 접근가능
+            console.log(divEl.innerHTML);
+            console.log(divEl.id); // id : 해당 요소의 아이디 속성
+            console.log(divEl.className); // className : 해당 요소의 클래스 속성
+
+            // innerHTML | innerText : 해당 소의 contect 영역 
+            console.log(divEl.innerHTML); // innerHTML : 해당 content영역에 html 태그와 텍스트가 포함
+            console.log(divEl.innerText); // innerText : 해당 content영역에 텍스트만 포함
+
+            // 해당 요소에 접근해서 값을 대입하면 속성값 변경도 가능 (속성값 초기화)
+            divEl.innerHTML='<b>innerText로</b> 속성값 <i>변경함</i>'; // innerHTML의 경우 : 출력하고자하는 문구에 html태그가 반영되면서 문구가 출력됨
+            divEl.innerText='<b>innerText로</b> 속성값 <i>변경함</i>'; // innerText의 경우 : 출력하고자하는 문구에 html태그가 반영되지 않고 그대로 문구로 출력됨
+            // 출력할 문구에 html태그가 있을 경우 => innerHTML 속성에 접근해서 변경해야됨
+
+            // 속성에 접근해서 스타일을 변경할수도 있음
+            divEl.style.backgroundColor = 'pink';
+            divEl.style.color = 'blue';
+
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h2>2. 데이터 입력받는 구문(변수에 기록 가능)</h2>
+
+    <p>
+        1)  변수 = [window.]confirm('질문내용'); <br>
+        2)  변수 = [window.]prompt('질문내용'); <br>
+        3)  변수 = 선택한요소.속성(id, className, innerHTML, .. ); <br>
+        4)  변수 = 선택한input요소.value;
+    </p>
+
+    <h3>1) confirm('질문내용');</h3>
+    <p>
+        confirm 호출시 "질문내용"과 "확인/취소"버튼이 존재하는 부라우저의 알람창 발생 <br>
+        확인 버튼 클릭시 true, 취소 버튼 클릭시 false를 반환 => 이때 반환되는 true/false값을 변수에 담음
+    </p>
+
+    <button onclick="testConfirm();">confirm 클릭</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+
+        function testConfirm() {
+
+            // confirm을 통해서 누른 true/false값을 result변수에 담기
+            let result = confirm('어려우면 확인, 쉬우면 취소 버튼 누르세요.');
+
+            console.log(result); // 개발자에게 보여지도록 설정
+
+            // div 화면상에 보여지도록 출력
+            const divEl = document.getElementById('area2');
+
+            if(result) {
+                divEl.innerHTML = '어려워요 ㅠㅠ';
+            } else {
+                divEl.innerHTML = '너무 쉬운데요?ㅋㅋ';
+            }
+
+        }
+
+    </script>
+
+    <br>
+
+    <h3>2) prompt('질문내용');</h3>
+    <p>
+        prompt 호출시 '질문내용'과 사용자가 값을 입력할 수 있는 '텍스트 상자'와 <br>
+        "확인/취소"버튼이 보여지는 브라우저의 알람창 발생 <br>
+        확인버튼 클릭시 텍스트 상자에 입력되어있는 값을 '문자열'로 반환, <br>
+        취소버튼 클릭시 텍스트에 입력된 값의 유무 상관없이 'null'로 반환
+    </p>
+
+    <button onclick="promptTest();">prompt 클릭</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+
+        function promptTest() {
+
+            let name=prompt('당신의 이름은 무엇입니까?');
+            let age =prompt('당신의 나이를 입력해주세요.');
+            let job = prompt('당신의 직업은 무엇입니까?');
+
+            // div 화면상에 보여지도록 출력
+            const divEl = document.getElementById('area3');
+
+            let result = confirm("안녕하세요. " + name + '님, 반갑습니다. 당신의 나는 ' + age + '살이고 직업은 ' + job + "이 맞으십니까?\n"
+                                    + "맞으면 '확인', 아니면 '취소'를 눌러주세요.");
+
+            if(result) {
+                divEl.innerHTML = '가입이 완료되었습니다.'
+                divEl.style.backgroundColor = 'red';
+                divEl.style.color="yellow";
+            } else {
+                divEl.innerHTML = '다시 작성해주세요.';
+                divEl.style.backgroundColor = 'black';
+                divEl.style.color="yellow";
+            }
+
+
+                // 텍스트상자의 경우 숫자만 입력할 수 있도록 제한할 수 없음!! => 숫자를 입력해도 문자열 타입으로 반환
+                console.log(name, typeof(name));
+                console.log(age, typeof(age));
+                console.log(job, typeof(job));
+
+        }
+
+    </script>
+
+    <br>
+
+    <button onclick="promptTest2();">prompt 클릭2</button>
+    <ul id="list">
+        <!-- 사용자가 입력한 숫자만큰 li 요소 갯수 출력 -->
+    </ul>
+
+    <script>
+
+        function promptTest2() {
+
+            let num = prompt("숫자만을 입력하세요.");
+
+            /*
+                자바에서의 for
+                for(int i = 0; i <= 5; i++) {
+                    i가 num까지 도달할 동안 반복 수행
+                }
+            */
+
+            // 자바스크립트에서의 for => 자료형(int)대신 변수선언문(let, var) 사용
+            let str = '';
+            for(let i = 1; i <= num; i++) {
+                str += "<li> 목록" + i + "</li>";  // 사용자가 입력한 숫자만큼 li 요소 갯수 출력
+            }
+
+            // const ulEl = document.getElementById('list');
+            // ulEl.innerHTML = str; 
+            // innerHTML을 통해 ul내부에 있는 content에 추가한 li목록들 삽입    
+            
+            // 속성에 직접 들어가서 str값들을 바로 대입할 수 있음
+            document.getElementById('list').innerHTML = str;
+
+        }
+
+    </script>
+
+    <br>    
+
+
+    <h3>3) 선택한요소.속성(id, className, innerHTML, .. );</h3>
+
+    <button onclick="tagTest();">요소클릭</button>
+    <div class="area" id="area4">
+        div에 들어간 기본구문 <br>
+        속성에 직접 들어가서 변경해보자!
+    </div>
+
+    <script>
+
+        function tagTest() {
+
+            // 요소를 선택하여 속성값에 들어갈 수 있음
+            
+            // div값에 들어갈 변수 생성하기
+            const divEl = document.getElementById('area4');
+
+            // 클래스명 출력
+            divEl.innerHTML = "클래스명 : " + divEl.className + "<br>";
+            // 아이디 출력
+            divEl.innerHTML += "아이디 : " + divEl.id + "<br>";
+            // 배경색 바꾸기
+            divEl.innerHTML += "배경색 pink로 바꾸기<br>";
+            divEl.style.backgroundColor = "pink";
+            // 글자색 바꾸기
+            divEl.innerHTML += "글자색 blue로 바꾸기<br>";
+            divEl.style.color="blue";
+            // div의 크기 바꾸기
+            divEl.innerHTML += "div의 width : 400px, height:500xp로 바꾸기"
+            divEl.style.width = '400px';
+            divEl.style.height = '500px';
+
+
+        }
+
+    </script>
+
+    <h3>4) 선택한 input요소.value</h3>
+
+    아이디 : <input type="text" id="userId"> <br>
+    비밀번호 : <input type="password" id="userPwd"> <br>
+    <button onclick="inputTest();">input요소 클릭</button>
+
+    <div class="area" id="area5"></div>
+
+    <script>
+
+        function inputTest() {
+
+            // 선택한 input요소를 가져와서 새로운 변수에 담기
+            const idInput = document.getElementById('userId');
+            const pwdInput = document.getElementById('userPwd');
+
+            // 아이디 및 비밀번호를 아무것도 입력안한 경우 : value=""로 나타남
+            console.log(idInput);
+            console.dir(idInput);
+            console.dir(pwdInput);   
+            // 아이디 및 비밀번호를 입력한 후 '클릭'을 누르면 value값이 입력한 값으로 변하는 것을 확인할 수 있다
+
+            // value값만 가져오기
+            const userId = idInput.value;
+            const userPwd = pwdInput.value
+
+            // 사용자가 입력한 아이디 및 비밀번호 화면상에 출력하기
+            const divEl = document.getElementById('area5');
+
+            divEl.innerHTML = "아이디 : " + userId + "<br>" + "비밀번호 : " + userPwd;
+
+            // value속성에 접근해서 버튼 클릭하면 value값을 div넣은 뒤 input텍스트 상자를 비워내기
+            idInput.value=""; // 빈칸으로 초기화 가능 => input요소의 value속성에 직접 접근했으므로 가능
+            pwdInput.value="";
+            // userId = "";        // 빈칸으로 초기화 불가능 => const변수 선언시 각 input요소 객체의 value값을 가져온 문자열값이 변수에 담긴 것 뿐이지               
+            // userPwd = "";       //                          변수 자체가 input요소 객체의 value요소를 가르키는 것이 아니므로 불가능
+            // 자바스트립트의 경우 순차적으로 문구가 실행되기 때문에 value값을 넣은 뒤 마지막으로 텍스트 상자를 비워내도록 할 수 있음
+
+        }
+
+    </script>
+    
+
+
+    <br><br><br>
+</body>
+
+</html>
