@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제2</title>
+
+    <style>
+        .area{
+            border:1px solid black;
+            width:100px;
+            height:100px;
+            background-color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>1. 색상 선택 후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h1>
+    
+    <div class="area" id="area1"></div>
+    <input type="color" id="colorChange" value=""> 
+    <!-- 색상은 value값에 저장됨 -->
+    <button onclick="changeColor();">변경</button>
+
+    <script>
+
+        function changeColor() {
+
+            const divEl = document.getElementById('area1');
+
+            if(divEl.style.backgroundColor == 'black') {
+                // 색상은 value값으로 접근
+                divEl.style.backgroundColor = document.getElementById('colorChange').value;
+            } else {
+                divEl.style.backgroundColor = document.getElementById('colorChange').value;
+            }
+            
+        }
+
+
+    </script>
+
+    <hr>
+
+    <h1>2. 버튼에 따라 크기 조절이 가능하게 만들기</h1>
+
+    <div class="area" id="area2"></div>
+    <button onclick="small();">50x50</button>
+    <button onclick="original();">원본(100x100)</button>
+    <button onclick="big();">200x200</button>
+
+    <script>
+
+        function small() {
+
+            const divEl = document.getElementById('area2');
+
+            divEl.style.width='50px';
+            divEl.style.height='50px';
+
+        }
+
+        function original() {
+
+            const divEl = document.getElementById('area2');
+
+            divEl.style.width='100px';
+            divEl.style.height='100px';
+
+        }
+
+        function big() {
+
+            const divEl = document.getElementById('area2');
+
+            divEl.style.width='200px';
+            divEl.style.height='200px';
+
+        }
+
+
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제3</title>
+
+    <style>
+        .area{
+            border:1px solid gray;
+            width:300px;
+            height:150px;
+            background-color: bisque;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>HTML 태그에 접근 테스트</h1>
+    <P>단, 구매자는 태그 이름으로 접근, 상품명은 아이디로 접근, 구매가격은 name값으로 접근할 것</P>
+
+    구매자 : <input type="text" id="userName" value="" placeholder="구매자의 이름을 입력하세요."><br><br>
+    상품명 : <input type="text" id="product" value="" placeholder="구매 상품명을 입력하세요."><br><br>
+    가격 : <input type="number" id="price" name="price" placeholder="구매 가격을 입력하세요."><br><br>
+    <button onclick="accessTag();">입력값 출력하기</button> <br><br>
+    <div class="area" id="area1"></div>
+
+    <script>
+
+        function accessTag() {
+
+            const divEl = document.getElementById('area1');
+
+            // 구매자 태그에 접근하여 변수에 담기
+            const userInput = document.getElementsByTagName('input');
+            // 상품명 아이디로 접근하여 변수에 담기
+            const proId = document.getElementById('product');
+            // 가격 name값에 접근하여 변수에 담기
+            const price = document.getElementsByName('price');
+
+
+            divEl.innerHTML = "구입자 : " + userInput[0].value + "<br>" + "구입상품 : " + proId.value + "<br>" + "구매가격 : " + price[0].value + "만원";
+
+            console.log(userInput);
+            console.log(proId);
+            console.log(price);
+
+
+        }
+
+    </script>
+    
+</body>
+
+</html>
