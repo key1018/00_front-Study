@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_요소가져오기(접근하기)</title>
+
+    <style>
+        .area{
+            border:1px solid black;
+            width:300px;
+            height:200px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>HTML요소에 접근하는 방법(해당 요소객체 가져오기)</h1>
+
+    <h3>1) 아이디를 이용해서 요소 가져오기</h3>
+    <div class="area" id="area1"></div>
+    <button onclick="accessId();">아이디로 접근</button>
+
+    <script>
+
+        function accessId() {
+
+            // 아이디로 요소 가져올 때
+            // 아이디는 '고유한'요소이므로 getElement 이다. => 뒤에 s를 안붙임
+            const divEl = document.getElementById('area1');
+
+            divEl.innerHTML = "아이디로접근성공! <br>";
+            // divEl.innerHtml += : divEl.innerHTML + "~~~"; => 기존의 HTML값에 값을 연이으고자 할 때 사용
+            divEl.innerHTML +='대단하쥬?<br>'
+
+            // 스타일도 변경가능
+            divEl.style.backgroundColor = 'yellow';
+            divEl.style.color = 'red';
+            divEl.style.width = '200px';
+            divEl.style.height = '400px';
+
+        }
+
+    </script>
+
+    <br><br>
+    
+    <div class="area" id="area2" style="background:pink">색 변경</div>
+    <button onclick="changeColor();">클릭때마다 색변경</button>
+
+    <script>
+        
+        function changeColor() {
+
+            // area2의 요소를 새로운 변수에 담기
+            const divEl = document.getElementById('area2');
+
+            // 클릭할때마다 배경색 및 글자색 변경하기
+            if(divEl.style.backgroundColor == 'pink') {
+                divEl.style.backgroundColor = 'yellow';
+                divEl.style.color = 'green';
+            } else if (divEl.style.backgroundColor == 'yellow') {
+                divEl.style.backgroundColor = 'aqua';
+                divEl.style.color = 'gray';
+            } else if (divEl.style.backgroundColor == 'aqua'){
+                divEl.style.backgroundColor = 'red';
+                divEl.style.color = 'white';
+            } else {
+                divEl.style.backgroundColor = 'pink';
+            }
+
+        }
+
+    </script>
+
+    <br><br>
+
+    <h3>2) 태그명을 이용해서 요소 가져오기</h3>
+    
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+
+    <button onclick="accessTagName();">태크명으로 접근</button>
+
+    <script>
+
+        function accessTagName() {
+
+            // 태그명으로 요소 가져오기
+            // 태그명은 '여러개'일 수 있으므로 getElements 이다. => 뒤에 s가 붙는다.
+            // document.getElementsByTagName('태그명') => 선택된 요소객체들이 배열에 담겨서 반환
+            const ulEl = document.getElementsByTagName('li');
+            // li태그들 선택 => [li요소객체, li요소객체, ... ] 로 배열에 담겨서 반환
+
+            console.log(ulEl, typeof(ulEl)); // object
+            console.log("배열의 크기 : " + ulEl.length); 
+
+            // 태그들에 접근할 때는 인덱스를 통해서 접근 가능
+            // 배열의 경우 : innerHTML 이 없음 => 인덱스를 통해 접근해야함!
+            ulEl[1].innerHTML = '안녕';
+
+            // 반복문을 활용하여 ulEl의 innerHTML값 변경하기
+            let blue = 20; // 배경색 변경하는 변수
+            for(let i=0; i < ulEl.length; i++){
+                ulEl[i].innerHTML = "인덱스 " + i + "번 값 변경";
+                // 인덱스가 증가할 때마다 배경색 변경
+                ulEl[i].style.backgroundColor = "rgb(280,110," + blue + ")";
+                // 인덱스가 증가할 때마다 blue값을 50씩 증가시키기
+                blue += 50;
+            }
+
+        }
+
+    </script>
+
+    <br>
+
+    <h3>3) name속성값을 이용해서 요소 가져오기</h3>
+
+    <form action="">
+
+        <fieldset>
+            <legend>취미</legend>
+
+            <input type="checkbox" name="hobby" value="game" id="game">
+            <label for="game">게임</label>
+
+            <input type="checkbox" name="hobby" value="reading" id="reading">
+            <label for="reading">독서</label>
+
+            <input type="checkbox" name="hobby" value="movie" id="movie">
+            <label for="movie">영화보기</label>
+
+            <input type="checkbox" name="hobby" value="kickboxing" id="kickboxing">
+            <label for="kickboxing">킥복싱</label>
+
+        </fieldset>
+
+    </form>
+
+    <br><br>
+
+    <div class="area" id="area3"></div>
+    <button onclick="accessName();">name으로 접근</button>
+
+    <script>
+
+        function accessName() {
+
+            // Name속성으로 요소 가져오기
+            // Name속성은 '여러개'일 수 있으므로 getElements 이다. => 뒤에 s가 붙는다.
+            // document.getElementsByName('name속성값');
+            // 선택된 요소들이 '여러개'일 수 있으므로 배열에 담겨서 반환됨
+
+            const arr = document.getElementsByName('hobby');
+            // [input요소, input요소, .. ] => input요소 : checkbox
+
+            console.log(arr);
+            // 체크가 되지 않은 경우 => checked: false, 체크가 된 경우 : checked: true
+
+            // 반복문을 활용하여 순차적으로 input요소에 접근
+            for(let i=0; i < arr.length; i++){
+                console.log(arr[i].checked); // 값들이 선택됐는지 안됐는지 출력
+                console.log(arr[i].value); // 값들의 value값 출력
+            }
+
+            console.log("---------------------------");
+
+            const divEl = document.getElementById('area3')
+            // // div에 선택한 값 넣으면 다시 체크할 때마다 div값 빈 칸으로 초기화하기
+            divEl.innerHTML = "";
+
+            // 체크한 값 div에 출력하기
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i].checked) {
+                    divEl.innerHTML += arr[i].value + "<br>";
+                }
+            }
+
+        }
+
+    </script>
+
+    <br>
+
+    <h3>4) 클래스를 이용해서 요소 가져오기</h3>
+
+    <!-- 여러개의 요소들 나열하여 class명 동일하게하기 -->
+    <pre class="test"></pre>
+    <p class="test"></p>
+    <ul class="test test1">
+        <li></li>
+        <li></li>
+    </ul>
+    <h2 class="test"></h2>
+
+    <!-- 클래스명이 test인 요소들 모두 가져오기 -->
+    <button onclick="accessClass();">class명으로 접근</button>
+    <div class="area" id="area4"></div>
+    
+    <script>
+
+        function accessClass() {
+
+            // 클래스 속성으로 요소 가져올 떄
+            // 클래스 속성이 '여러개'일 수 있으므로 getElements 를 이용한다 => s를 붙인다
+            // document.getElementsByClassName('class 속성'); => 선택된 요소들이 '여러개'이므로 배열에 담겨 반환
+
+            const arr = document.getElementsByClassName('test'); // 선택된 순서대로 배열에 담김
+            // [pre요소, p요소, ul요소, ...]
+
+            const divEl = document.getElementById('area4');
+
+            // 반복문을 활용하여 순차적으로 접근가능
+            for(let i=0; i < arr.length; i++){
+                divEl.innerHTML += i +"번 인덱스 요소 : " + arr[i].tagName + "<br>";
+                console.log(arr[i]); // 요소객체출력
+            }
+            
+        }
+
+    </script>
+
+    <br>
+
+    <h3>5) 내가 원하는 요소를 자유자재로 가져오기(선택자를 활용)</h3>
+
+    <div id="test1">테스트</div>
+    <div class="test">
+        <h2>안녕</h2>
+        <h2>잘가</h2>
+    </div>
+    <span>어서와</span>
+    <h2>ㅋㅋㅋ</h2>
+
+    <!-- 원하는 요소 아무거나 가져오기 -->
+    <button onclick="accessSelector();">요소 클릭</button>
+    <div class="area" id="area5"></div>
+
+    <script>
+
+        function accessSelector() {
+
+            // 선택자 이용해서 요소가져올 떄
+            // document.querySelector('선택자') => 선택된 요소 객체 하나만 반환
+            // 주로 '아이디'를 선택할 때 사용
+
+            // '여러개'의 선택자를 이용해서 요소가져올 때
+            // document.querySelectorAll('선택자') => 선택된 요소 객체들이 배열에 담겨 반환
+
+            // 아이디를 선택할 경우(하나만)
+            const divEl = document.querySelector('#test1'); // div요소 객체
+            // 클래스를 선택할 경우
+            const classEl = document.querySelectorAll('.test'); // class요소 객체
+            // 클래스 안에 있는 h2요소를 선택할 경우(여러개)
+            const h2El = document.querySelectorAll('.test>h2');
+            // div 바로 뒤에 있는 span요소를 선택할 경우
+            const spanEl = document.querySelector('.test+span');
+            // h2요소만 선택할 경우
+            const onlyH2 = document.getElementsByTagName('h2');
+
+            // div요소에 모두 담기
+            const diEl = document.getElementById('area5');
+            diEl.innerHTML = "아이디를 선택할 경우 : " + divEl.innerHTML + "<br>"; // 요소이므로 바로 접근 가능
+            diEl.innerHTML += "H2(여러개)을 선택할 경우 : " + h2El[0].innerHTML + "<br>"; // 배열 객체이므로 인덱스를 통해서 접근해야함
+            diEl.innerHTML += "H2(여러개)을 선택할 경우 : " + h2El[1].innerHTML + "<br>";
+            diEl.innerHTML += "span을 선택할 경우 : " + spanEl.innerHTML + "<br>";
+            
+    
+        }
+
+    </script>
+
+</body>
+</html>
