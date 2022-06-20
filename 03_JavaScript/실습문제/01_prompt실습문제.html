@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제 1</title>
+</head>
+<body>
+
+    <h1>행 열 각각 입력받아 테이블 만들기</h1>
+
+    <button onclick="noCountPrompt();">실습문제1 클릭</button>
+    
+    <table id="table" border='1'>
+        <!-- 사용자가 입력한 행, 열 숫자에 따라 테이블 만들기 -->
+    </table>
+
+    <script>
+
+        // count 없는 테이블
+        function noCountPrompt() {
+
+            let width = prompt('몇 행을 추가하시겠습니까?');
+            let height = prompt('몇 열을 추가하시겠습니까?');
+
+            // 행 (row)
+            let row = "";
+            // 열 (column)
+            let column = "";
+            // 카운트 숫자 붙이기
+            let count = 1;
+
+            for(let i = 1; i <= width; i++){
+                row += "<th height = '50px' width='30px'>" + "</th>";
+                count++;
+            }
+
+            
+            for(let j = 1; j < height; j++) {
+                column += "<tr height='50px'>" + row + "</tr>";
+                count++;
+            }
+
+            const tbEl = document.getElementById('table');
+
+            tbEl.innerHTML = row + column;
+
+        }
+
+    </script>
+
+    <h2>행 열을 각각 입력받아서 새파일에 담기</h2>
+
+    <button onclick="countPrompt();">실습문제2 클릭</button>
+    <div id="area"></div>
+
+    <script>
+
+        function countPrompt() {
+
+            let row = prompt('몇 행을 추가하시겠습니까?');
+            let col = prompt('몇 열을 추가하시겠습니까?');
+
+            let count=1;
+
+            document.write("<table border='1' height='20px' width='20px'>");
+            
+            for( let i=0; i<row; i++)
+                {
+                    document.write("<tr>");
+
+                        for(let j=0; j<col; j++) 
+                        {
+                            document.write("<td>" + count + "</td>");
+                            count++;
+                        }
+
+                    document.wrtie("</tr>");
+
+                }
+
+                document.write("</table>");
+            
+        }
+
+    </script>
+
+    
+</body>
+</html>
