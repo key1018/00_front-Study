@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_함수</title>
+    <style>
+        .area{
+            border:1px solid black;
+            width:300px;
+            height:200px;
+        }
+
+        pre{
+            font-family:고딕체;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1 onclick="nameFunction();">함수(function)</h1>
+    <h3 onclick="nameFunction();">* 선언적 함수(이름있는 함수)</h3>
+    <pre>
+        function 함수명([매개변수, 매개변수, .. ]) {
+            해당 함수 호출시 실행시킬 코드;
+            [return 결과값;]
+        }
+    </pre>
+
+    <div class="area" id="area1"></div>
+    <button onclick="nameFunction();">선언적 함수 클릭</button>
+
+    <script>
+
+        function nameFunction() {
+
+            // div요소에 담기
+            const divEl = document.getElementById("area1");
+
+            // 선언적함수는 언제어디서나 사용 가능하다
+            // 클릭할 때마다 div에 값 출력하기
+            divEl.innerHTML += "funtionTest1()함수 실행됨<br>";
+        }
+
+    </script>
+
+    <h3>* 익명 함수(이름없는 함수)</h3>
+    <!-- 함수 자체를 어딘가에 대입할 때 주로 사용 => 변수 대입 -->
+    <pre>
+        변수|속성 = function([매개변수, 매개변수, .. ]) {
+            해당 함수 호출시 실행시킬 코드;
+            [return 결과값;]
+        }
+        
+        특정 변수나 객체의 속성에 대입되는 함수 제시시 주로 사용됨
+        (주로 이벤트 핸들러 작성시 사용)
+    </pre>
+    <div class="area" id="area2"></div>
+    <button id="noName">익명 함수 클릭</button>
+
+    <script>
+
+        // 버튼 요소 새로운 변수에 담기
+        const btn = document.getElementById('noName');
+        console.log(btn);
+
+        // 버튼 요소를 담은 새로운 변수가 클릭되는 순간 함수 실행
+        btn.onclick=function() { // 함수명 없음!!
+            document.getElementById('area2').innerHTML += "익명함수 넣음 <br>"
+            
+        }
+
+        // 익명 함수 : 오로지 해당 버튼만 눌러야지 실행 가능(해당 이벤트에서만 작동할 때 사용)
+        // 선언적 함수 : 여기저기 필요할 때마다 사용가능(여기저기서 호출할 목적일 때 사용)
+
+    </script>
+
+    <hr>
+
+    <h3>* 함수의 매개변수</h3>
+    <!-- 함수에 값을 전달하고 전달받은 값은 매개변수를 통해 전달받을 수 있음 -->
+    <div class="area" id="area3"></div>
+    <button onclick="valueTest('자바스크립트 안녕');">실행1</button> <!--함수명([전달할매개변수값])-->
+    <!-- 매개변수로 문자열 전달 가능 -->
+    <button onclick="valueTest(100);">실행2</button>
+    <!-- 매개변수로 숫자 전달 가능 -->
+    <button onclick="valueTest(true);">실행3</button>
+    <!-- 매개변수로 논리값 전달 가능-->
+    <button onclick="valueTest([1,2,3]);">실행4</button>
+    <!-- 매개변수로 배열 전달 가능 -->
+    <button onclick="valueTest(confirm('yes or no'));">실행5</button>
+    <!-- 매개변수로 태그 전달 가능 -->
+    <button onclick="valueTest('안녕', '졸리다', '그렇지?');">실행6</button> <!-- 매개변수값 3개 전달 -->
+    <!-- 정의해둔 매개변수보다 많은 값을 입력한 경우 : 초과된 결과값은 무시됨 -->
+    <button onclick="valueTest();">실행7</button>
+    <!-- 아무것도 전달하지 않은 경우 : undefined로 출력됨 -->
+
+    <script>
+
+        function valueTest(value) { // value : 매개변수명 => 값을 전달받는 매개변수는 1개
+            // 해당 함수 호출시 전달받고자하는 값이 있다면? => 매개변수 작성
+            // 매개변수 제시시 자료형, 선언구문 X => 오직 변수명만!!
+
+            // 매개변수를 통해 전달받은 값을 div를 통해 출력하기
+            document.getElementById('area3').innerHTML += "전달받은 매개변수 값 : " + value + "<br>";
+
+        }
+
+    </script>
+    
+    <hr>
+
+    <h3>* 매개변수 관련 arguments배열</h3>
+    <p>
+        * arguments : 모든 함수마다 내부적으로 존재하는 배열 객체 <br>
+          함수 호출시 전달되는 값을 내부적으로 arguments 배열에 담김
+    </p>
+
+    <div class="area" id="area4"></div>
+    <button onclick="argumentsTest(1,11,40,2);">arguments 확인</button>
+    <!-- 매개변수 값을 전달하면서 호출 -->
+
+    <script>
+
+        function argumentsTest() { // 전달받고자하는 매개변수 없음
+
+            // 내부적으로 존재하는 arguments 배열을 통해 출력
+            console.log(arguments);
+
+            // arguments를 통해 전달받은 값들의 합 출력하기
+            let sum = 0;
+            for(let i in arguments) {
+                sum += arguments[i];
+            }
+
+            document.getElementById('area4').innerHTML = "전체 합 : " + sum + "<br>";
+            document.getElementById('area4').innerHTML += "평균 :" + (sum/arguments.length) + "<br>";
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h3 onclick="thisTest(this)">* 매개변수에 this관련 전달하기</h3>
+    <!-- this : h3요소 자체를 전달 -->
+    <div class="area" id="area5"></div>
+    
+    <button onclick="thisTest(this);">클릭1</button>
+    <!-- this : button요소 자체를 전달 -->
+    <button onclick="thisTest(this.className);" class="btnClass">클릭2</button>
+    <!-- this.className : 클릭2 요소의 클래스명을 전달 -->
+    <input type="button" value="클릭3" onclick="thisTest(this.value);">
+    <!-- this.value : 클릭3 요소의 value값을 전달 -->
+    <button onclick="thisTest(this.id);" id="btnId">클릭4</button>
+    <!-- this.id : 클릭4 요소의 id값을 전달 -->
+    <button onclick="thisTest(this.innerHTML);" class="btnClass">클릭5</button>
+    <!-- this.innerHTML : 클릭5 요소의 텍스트값을 전달 -->
+
+    <!-- 즉, this는 요소 자체를 전달하고 
+             this.속성명 을 통해 요소의 속성값만을 전달할  수 있다 -->
+
+    <script>
+        function thisTest(t) { // t : 매개변수명
+            document.getElementById('area5').innerHTML += "this관련 매개변수값 : " + t + "<br>";
+            console.log(t);
+        }
+    </script>
+
+    <br><br>
+    
+    <!-- this를 통해 버튼 및 div 속성 자체를 전달하여 클릭할 때 마다 스타일 변경하기 -->
+    <button onclick="styleChange(this);">스타일 변경</button>
+    <div class="area" id="thisDiv" onclick="styleChange(this)">스타일변경</div>
+    <script>
+        function styleChange(a) {
+            a.style.backgroundColor='yellow';
+            a.style.color='blue';
+            a.style.fontWeight='900';
+            a.style.fontSize='15px';
+            a.style.width="150px";
+            a.style.height="100px";
+        }
+    </script>
+
+    <hr>
+
+    <h2>함수의 리턴</h2>
+
+    <h3>* 일반적인 값 리턴(선언적 함수) </h3>
+
+    <button onclick="returnFunction();">리턴 확인</button>
+    <div class="area" id="area6"></div>
+
+    <script>
+
+        // 클릭시 호출되는 함수 x
+        // 1~100까지의 정수값 랜덤으로 출력되는 함수
+        function randomMath() {
+            return parseInt(Math.random() * 100 + 1); 
+        }
+
+        // 클릭시 호출되는 함수 o 
+        function returnFunction() {
+            document.getElementById('area6').innerHTML += "랜덤값 : " + randomMath() + "<br>";
+            // 클릭할 때 마다 위의 랜덤값을 담은 함수를 호출하여 랜덤값을 전달받음
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>* 익명함수 리턴</h3>
+    <div class="area" id="area7"></div>
+    <button onclick="noNameReturn()();">리턴 확인</button>
+
+    <script>
+
+        function noNameReturn() {
+
+            const userName = prompt('이름을 입력하세요');
+
+            return function() {
+               const result =  confirm("입력한 이름이 '" + userName + "'이 맞습니까?"); // 사용자가 입력한 이름을 return하도록 설정
+                // return되는 값은 처음에 호출했던 noNameReturn()으로 돌아감
+                // 그 후에 한 번 더 호출을 통해 알림창이 뜨게 만들어야함 => noNameReturn()뒤에 "()"를 추가하여 한 번 더 호출하게해서
+                // return값이 보여지도록 만들어야함
+                
+                if(result) {
+                    document.getElementById('area7').innerHTML = "네, 맞습니다."
+                } else {
+                    document.getElementById('area7').innerHTML = "아니요."
+                }
+                
+            }
+
+        }
+
+    </script>
+
+    <br><br><br>
+</body>
+
+</html>
