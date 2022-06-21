@@ -64,24 +64,26 @@
 
             let count=1;
 
-            document.write("<table border='1' height='20px' width='20px'>");
+            let table = "<table border='1'>";
             
             for( let i=0; i<row; i++)
                 {
-                    document.write("<tr>");
+                    table += "<tr>";
 
                         for(let j=0; j<col; j++) 
                         {
-                            document.write("<td>" + count + "</td>");
+                            table += "<td>" + count + "</td>";
                             count++;
                         }
 
-                    document.wrtie("</tr>");
+                   table+="</tr>";
 
                 }
 
-                document.write("</table>");
+               table +="</table>";
             
+               // 최종 출력
+               document.write(table);
         }
 
     </script>
