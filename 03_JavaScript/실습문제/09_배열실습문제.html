@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제9</title>
+    <style>
+        #result{
+            border:1px solid red;
+            width:900px;
+            height:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>배열 실습 문제4</h1>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="food">피자 치킨 당근 햄버거 떡볶이</label>
+    </fieldset>
+    <br>
+    <input type="text" id="delete" placeholder="삭제할 음식을 입력하세요.">
+    <input type="text" id="addition" placeholder="추가할 음식을 입력하세요." ><br><br>
+    <div id="result"></div><br>
+    <button onclick="arrayTest();">처리 및 출력</button>
+
+    <script>
+
+        function arrayTest() {
+
+            // div요소에 값 담기
+            divEl = document.getElementById('result');
+
+            // 음식들을 담을 변수
+            const food = document.getElementById('food').innerHTML.split(' ');
+            console.log(food);
+
+            // 입력받은 index의 값들을 담을 변수
+            const deleteFood = document.getElementById('delete').value;
+            const additionFood = document.getElementById('addition').value;
+
+            // 삭제할 음식의 인덱스를 담을 변수
+            const index = food.indexOf(deleteFood);
+            console.log(index);
+
+            // splice 함수를 통해 삭제를 원하는 값의 인덱스를 찾아 삭제처리하기
+            food.splice(index,1);
+            console.log(food);
+
+            // 추가할 음식을 담는 함수 생성
+            food.push(additionFood);
+
+            // 결과값 추출
+            divEl.innerHTML = food;
+            
+        }
+
+    </script>
+    
+</body>
+
+</html>
