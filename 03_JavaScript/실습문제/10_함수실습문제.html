@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제10</title>
+    <style>
+        input{
+            margin:10px;
+        }
+        #inputTitle,#inputDate,#inputWriter{
+            padding:10px;
+            width:450px;
+            height:50px;
+            background-color: rgb(255, 219, 16);
+            display: none; /* 평소에는 안보이도록 설정 */
+        }
+    </style>
+</head>
+<body>
+    
+    <fieldset>
+        <legend>검색할 항목을 선택하세요.</legend>
+        <div id="searchList" style="text-align:center;">
+            <input onclick="checkTitle();" type="radio" name="search" value="title" id="title">
+            <label onclick="checkTitle();" for="title">제목</label>
+            <input onclick="checkDate();" type="radio" name="search" value="date" id="date">
+            <label onclick="checkDate();" for="date">날짜</label>
+            <input onclick="checkWriter();" type="radio" name="search" value="writer" id="writer">
+            <label onclick="checkWriter();" for="writer">작성자</label>
+        </div>
+    </fieldset>
+
+    <hr>
+
+    <div id="inputTitle">
+        검색할 제목을 입력하세요 : <br>
+        <input type="text" style="width:300px">
+        <button>검색</button>
+    </div>
+
+    <div id="inputDate">
+        검색할 날짜를 선택하세요 : <br>
+        <input type="date"> - <input type="date">
+        <button>검색</button>
+    </div>
+
+    <div id="inputWriter">
+        검색할 작성자 아이디를 입력하세요 : <br>
+        <input type="text" style="width:300px"> 
+        <button>검색</button>
+    </div>
+
+    <script>
+
+            // 클릭했을 때 값을 담을 변수 생성 (전역함수로 설정)
+            const clickTitle = document.getElementById('inputTitle')
+            const clickDate = document.getElementById('inputDate')
+            const clickWriter = document.getElementById('inputWriter')
+
+
+        function checkTitle() {
+           // 제목 클릭하면 제목만 보이도록 설정
+            clickTitle.style.display="block";
+            clickDate.style.display="none";
+            clickWriter.style.display="none";
+        }
+
+        function checkDate() {
+            // 날짜 클릭하면 날짜만 보이도록 설정
+            clickTitle.style.display="none";
+            clickDate.style.display="block";
+            clickWriter.style.display="none";
+        }
+
+        function checkWriter() {
+            // 작성자 클릭하면 작성자만 보이도록 설정
+            clickTitle.style.display="none";
+            clickDate.style.display="none";
+            clickWriter.style.display="block";
+        }
+
+
+    </script>
+
+
+    
+</body>
+</html>
