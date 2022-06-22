@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_객체1</title>
+    <style>
+        .area{
+            border:1px solid black;
+            width:300px;
+            height:400px;
+        }
+        pre{font-family: 고딕체;}
+    </style>
+</head>
+
+<body>
+
+    <h1>객체</h1>
+
+    <h3>* 객체 선언 및 사용</h3>
+    <p>
+        객체는 중괄호{}를 사용해서 생성하고, <br>
+        중괄호 안에 이 객체에 필요한 속성(property)들을 정의함<br>
+        속성명:속성값 의 형태로 정의함 (키:밸류) <br>  <!-- 자바에서의 HashMap구조와 비슷 -->
+        속성값으로는 모든 자료형의 값을 다 담을 수 있음 (문자열, 숫자, 배열, 논리값, .. 상관없음)
+    </p>
+    <pre>
+        val | let | const 변수 = { // 객체 선언
+            속성명:속성값,
+            속성명:속성값,
+            속성명:속성값,
+            ...
+        }
+    </pre>
+
+    <button onclick="test1();">객체 선언 확인</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+
+        function test1() {
+
+            // 배열 생성
+            const arr = ["홍길동", 20, "삼송대학교", ['경영학과', '국어국문학과']];
+            // 자바스크립트에서의 배열 == 자바에서의 ArrayList와 유사
+
+            // 객체 생성
+            const user = { // 객체명 : user
+                name:"홍길동", // 키(속성명: ""의 유무 상관없음) : 밸류(속성값: 문자열이면 "" 필수)
+                age:20,
+                school:"삼송대학교",
+                major:["경영학과", "국어국문학과"]
+            };
+            // 자바스크립트에서의 객체 == 자바에서의 HashMap과 유사
+
+            console.log(user, typeof(user)); // 객체
+
+            // div요소에 담기
+            const divEl = document.getElementById('area1');
+            // 배열 출력
+            divEl.innerHTML += "배열 : " + arr + "<br>"; // 배열의 경우 toString()이 내부적으로 정의되어있어서 전체값 출력 가능
+            // 객체 출력
+            divEl.innerHTML += "객체 : " + user + "<br>"; // 객체의 경우 toString()이 내부적으로 정의되어있지 않음 => 기본적으로 자료형만 추출됨!
+            
+            // 객체의 속성에 접근하는 방법
+            // 방법 1) 대괄호를 이용해서 접근하는 방법 : 객체명["속성명"]
+            divEl.innerHTML += "<br><b>대괄호를 이용해서 접근하기 : 객체명['속성명']</b><br>";
+            divEl.innerHTML += "name : " + user["name"] + "<br>";
+            divEl.innerHTML += "age : " + user['age'] + "<br>";
+            divEl.innerHTML += "school : " + user['school'] + "<br>";
+            divEl.innerHTML += "major : " + user['major'][1] + "<br>"; // 속성값이 배열인 경우 인덱스를 통해서 접근 가능
+
+            // 방법 2) '.'을 통해서 접근하는 방법 : 객체명.속성명   => "" 없음!!
+            divEl.innerHTML += "<br><b>'.'을 통해서 접근하기 : 객체명.속성명<b><br>";
+            divEl.innerHTML += "name : " + user.name + "<br>";    
+            divEl.innerHTML += "age : " + user.age + "<br>";
+            divEl.innerHTML += "school : " + user.school + "<br>";
+            // divEl.innerHTML += "major : " + user."major" + "<br>"; // 속성명에 ""를 넣는 경우 : 오류 발생
+            // divEl.innerHTML += "major : " + user.ma + "<br>"; // 속성명을 잘못 기입한 경우 : 오류발생x, undefined로 출력됨
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>* 객체생성시 특이케이스(속성명 제시시 반드시 문자열 형태로 써야되는 경우)</h3>
+    <button onclick="test2();">객체 생성 확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+
+        function test2() {
+
+            // 일반적인 객체 생성
+            const user = {
+                userName:"홍길동",
+                age:20
+            };
+
+            // 특이케이스 객체 생성
+            const product = {
+                "product Name":"가지",
+                "price~":1400
+                // 속성명에 공백이 있거나 특수문자가 포함되는 경우 : 반드시 "문자열"형태로 묶어서 표현
+            };
+
+            // 특이케이스 객체속성에 접근하기
+            // 1) '.'을 통해서 접근하기  =>> 불가능
+            // document.getElementById('area2').innerHTML += "product Name : " + product.product Name + "<br>";
+            // document.getElementById('area2').innerHTML += "price : " + product.price~ + "<br>";
+
+            // 2) '[]'대괄호를 통해서 접근하기 =>> 가능
+            document.getElementById('area2').innerHTML += "product Name : " + product['product Name'] + "<br>";
+            document.getElementById('area2').innerHTML += "price : " + product['price~'] + "<br>";
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>* 객체에서의 반복문</h3>
+    <p>
+        객체가 가지고 있는 모든 속성들에 순차적으로 접근하고자 할 때 반복문 사용 가능 <br>
+        단, 단순한 for loop문이 아닌 for in문으로만 접근가능하다!
+    </p>
+    <button onclick="test3();">반복문 실행</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+
+        function test3() {
+
+            // 객체 생성
+            const user = {
+                name:"홍길동",
+                age:20,
+                school:"삼송대학교",
+                major:["경영학과", "국어국문학과"]
+                // key : "아무거나"
+            };
+
+            document.getElementById('area3').innerHTML += "방법1) '.'를 통해 속성값에 접근하기 =>> 불가능 <br>"
+            // 반복문을 통해 순차적으로 접근
+            for(let key in user) {
+                // in 뒤에 "객체"제시시
+                // 반복문 돌 때 마다 해당 객체의 속성명(key값)이 앞쪽의 변수에 담김
+                // 즉, key 변수에는 속성명(name, age, .. )이 담김
+                // document.getElementById('area3').innerHTML += "key : " + key + "<br>";
+                
+                // 방법1) '.'를 통해 속성값에 접근하기 =>> 불가능
+                document.getElementById('area3').innerHTML += "key : " + key + ", value : " + user.key + "<br>";
+                // value값 제대로 출력X => user.key 방법의 경우 key값이 let key를 가르키는 것이 아닌 user안에 있는 key라는 속성명을 가르키게됨
+                // => user.name / user.age 식으로 접근해야하는데 key속성명에 접근하게되면 그 안에 있는 속성값만 출력되므로 오류!
+            }
+
+            document.getElementById('area3').innerHTML += "<br>방법2) [] 대괄호를 통해 속성값에 접근하기 =>> 가능 <br>"
+            for(let key in user) {
+                // 방법2) []를 통해 속성값에 접근하기 =>> 가능
+                document.getElementById('area3').innerHTML += "key : " + key + ", value : " + user[key] + "<br>";
+                // value값 제대로 출력 => 단, 대괄호를 이용할 때 속성값에 ""를 넣으면 안됨
+                // => user["key"]의 경우 key값이 let key라는 변수가 아닌 user객체 안에 있는 key라는 속성명을 접근하게되므로 오류!
+            }
+
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>* 객체의 메소드 속성</h3>
+    <p>객체의 속성 중 함수 자료형인 속성을 '메소드'라고 부름</p>
+
+    <button onclick="test4();">메소드 확인</button>
+    <div class="area" id="area4"></div>
+
+    <script>
+
+        function test4() {
+
+            // 일반 변수 생성
+            const kind = "사람";
+            const name = "강개똥";
+            const food = "떡볶이"; // string타입의 변수
+
+            // 객체 생성
+            const pet = {
+                kind:"고양이",
+                name:"야통이",
+                eat:function (food) { // 메소드
+                    // eat이라는 속성에 담기는 함수이기 때문에 익명함수로 생성
+                    // eat : pet이라는 객체에 담겨져있는 속성(메소드)
+                    document.getElementById('area4').innerHTML = "메소드 생성<br>";
+                    document.getElementById('area4').innerHTML += "매개변수 : " + food + "<br>";
+
+                    // 고양이 야통이가 food를 맛있게 먹고있습니다. 출력
+                    document.getElementById('area4').innerHTML += "<br>변수에 접근하여 출력 => 오류<br>"
+                    document.getElementById('area4').innerHTML += kind + " " + name + "가 " + food + "를 맛있게 먹고있습니다.<br><br>"; // 일반 변수에 담긴 값들이 출력됨
+                    // 왜? this.가 없는 경우 동일한 이름이 있는 변수에 접근하게됨 => 메소드 속성에서 같은 객체 내의 속성에 접근하고자 한다면 this.를 붙여서 접근해야함!
+                    document.getElementById('area4').innerHTML += "객체의 속성값에 접근하여 출력 => 정상<br>"
+                    document.getElementById('area4').innerHTML += this.kind + " " + this.name + "가 " + food + "를 맛있게 먹고있습니다.";
+                }
+            }
+
+            // eat에 값을 전달하면서 호출
+            pet.eat('고등어');
+
+        }
+
+    </script>
+
+    <hr>
+    
+    <h3>* in과 with키워드</h3>
+    <p>
+        in : 객체 내에 해당 속성이 있는지 확인해주는 연산자(존재하면 true, 아니면 false) <br>
+        with : 객체의 속성에 접근할 때 객체명을 생략할 수 있도록 도와주는 연산자
+    </p>
+
+    이름 : <input type="text" id="name"> <br>
+    국어 : <input type="number" id="kor"> <br>
+    수학 : <input type="number" id="math"> <br>
+    영어 : <input type="number" id="eng"> <br><br>
+
+    <button onclick="test5();">in 키워드 확인</button>
+    <button onclick="test6();">with 키워드 확인</button>
+    <button onclick="test7();">toString 정의하기</button>
+    <div class="area" id="area5"></div>
+
+    <script>
+
+        function test5() { // in 키워드 확인하는 함수
+
+            // 객체 생성
+            const student = {
+                name:document.getElementById('name').value,
+                kor:document.getElementById('kor').value,
+                math:document.getElementById('math').value,
+                eng:document.getElementById('eng').value
+            }; 
+
+            // "속성명" in 객체명 : 객체에 해당 속성이 존재할 경우 true, 아니면 false 반환 => 조건문으로 사용가능
+            document.getElementById('area5').innerHTML += "name의 유무 : " + ('name' in student) + "<br>";
+            document.getElementById('area5').innerHTML += "age의 유무 : " + ('age' in student) + "<br>";
+
+        }
+
+        function test6() { // with 키워드 확인하는 함수
+
+                // 객체 생성
+                const student = {
+                name:document.getElementById('name').value,
+                kor:document.getElementById('kor').value,
+                math:document.getElementById('math').value,
+                eng:document.getElementById('eng').value
+            }; 
+
+            // div에 객체 출력
+            document.getElementById('area5').innerHTML += "name : " + student.name + "<br>";
+            document.getElementById('area5').innerHTML += "kor : " + student.kor + "<br>";
+            document.getElementById('area5').innerHTML += "math : " + student.math + "<br>";
+            document.getElementById('area5').innerHTML += "eng : " + student.eng + "<br>";
+            // 속성값을 출력할때마다 동일한 속성명을 제시해야함!!
+            // =>> with을 활용하여 속성명을 생략하자!
+
+            document.getElementById('area5').innerHTML += "<br>with을 활용하여 속성명을 생략하기<br>";
+            with(student) {
+                document.getElementById('area5').innerHTML += "name : " + name + "<br>";
+                document.getElementById('area5').innerHTML += "kor : " + kor + "<br>";
+                document.getElementById('area5').innerHTML += "math : " + math + "<br>";
+                document.getElementById('area5').innerHTML += "eng : " + eng + "<br>";
+
+            }
+
+        }
+
+        function test7() { // toString정의 및 메소드를 정의하여 출력하는 함수
+
+                // 객체 생성
+                const student = {
+                    name:document.getElementById('name').value,
+                    kor:document.getElementById('kor').value,
+                    math:document.getElementById('math').value,
+                    eng:document.getElementById('eng').value,
+                    // toString 메소드 정의하기 => 오버라이딩이랑 비슷한개념(완전 같지는 않다!!)
+                    toString:function() { // 문자열을 반환해주는 코드를 직접 작성 => 객체를 호출했을 때 반환되도록 정의함
+                        return "name : " + this.name + ", kor : " + this.kor + ", math : " + this.math + ", eng : " + this.eng + "<br>"; 
+                    },
+                    // 총 합을 구해주는 메소드 정의하기
+                    getSum:function() { // input의 value값은 문자열이므로 숫자로 형변환해야함
+                        return Number(this.kor) + parseInt(this.math) + parseFloat(this.eng);
+                    },
+                    // 평균값을 구해주는 메소드 정의하기
+                    getAvg:function() {
+                        return this.getSum() / 3;
+                    }
+                };
+
+                // 객체 전체 출력
+                document.getElementById('area5').innerHTML += student + "<br>";
+                // 객체에는 toString이 내부적으로 정의가 되어있지 않음 => 객체에 toString을 정의하여 출력하자!
+
+                // with을 활용하여 객체 속성값 출력하기
+                with(student) {
+                    document.getElementById('area5').innerHTML += "총 점수 : " + getSum() + "<br>";
+                    document.getElementById('area5').innerHTML += "평균 점수 :" + getAvg() + "<br>";
+                }
+ 
+            } 
+
+    </script>
+
+    <hr>
+
+    <h3>* 객체의 속성 추가 및 제거</h3>
+    <button onclick="test8();">추가 및 제거 확인</button>
+    <div class="area" id="area6"></div>
+
+    <script>
+
+        function test8() {
+
+            // 텅 빈 객체 생성
+            const user = {};
+
+            // 객체에 속성 추가
+            user.name = "홍길동";
+            user.age = 20;
+            user.major = ['경영학과', '영문학과'];
+            user.job = '학생';
+
+            // 중복된 속성명을 제시할 경우 속성값이 변경된다
+            user.job = '인턴';
+
+            // toString 메소드 정의
+            user.toString = function() {
+                return "name : " + this.name + ", age : " + this.age + ", major : " + this.major + ", job : " + this.job + " <br>";  
+            }
+
+            document.getElementById('area6').innerHTML += "age 제외 전 : " + user + "<br>";
+
+            // 객체의 속성 제거
+            delete(user.age); // student속성에서 age 속성값을 삭제
+            // age의 속성값을 삭제한것이지 속성 자체를 삭제한 것은 아니기 때문에 'undefined'로 나타남
+
+            document.getElementById('area6').innerHTML += "age 제외 후 : " + user;
+
+        }
+
+    </script>
+
+
+    <br><br><br>
+</body>
+
+</html>
