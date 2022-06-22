@@ -122,6 +122,68 @@
         }
 
     </script>
+
+    <hr>
+
+    <h3>* Date 내장객체</h3>
+    <button onclick="test3();">날짜 확인</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+
+        function test3() {
+
+            // div요소 담아내기
+            let divEl = document.getElementById('area3');
+
+            // 현재 시스템 날짜 및 시간을 나타내는 객체 생성
+            let date = new Date();
+            // 시간 출력
+            divEl.innerHTML += date + "<br>";
+
+            // 원하는 년,월,일로 세팅(2022년 4월 30일)
+            let date1 = new Date(2022,3,30); // 월의 경우 내부적으로 +1이 됨 => 4월을 출력하고자할 떄 3을 입력해야됨
+            divEl.innerHTML += date1 + "<br>";
+            // 2022년 10월 18일 출력
+            date1=new Date(2022,9,18);
+            divEl.innerHTML += date1 + "<br>";
+
+            // 원하는 년,월,일,시,분,초로 세팅(2022년 7월 20일 12시 30분 40초 5000밀리세컨)
+            let date2 = new Date(2022, 7-1, 20, 12, 30, 40, 5000);
+            divEl.innerHTML += date2 + "<br>";
+            // 1초 == 1000밀리세컨
+            // 5초 == 5000밀리세컨
+
+            // 년/월/일/요일/시/분/초 각각의 값 출력하기
+            divEl.innerHTML += "년도 : " + date2.getFullYear() + "<br>"; // 2022
+            divEl.innerHTML += "월 : " + (date2.getMonth()+1) + "<br>";   // 7 => 월을 뽑을 때는 입력한 값이 그대로 기재되므로 +1을 해주어야 정확한 월을 출력할 수 있다.         
+            divEl.innerHTML += "일 : " + date2.getDate() + "<br>"; // 20
+            divEl.innerHTML += "요일 : " + date2.getDay() + "<br>"; // 요일 자체를 출력하는 것이 아닌 요일에 대한 숫자가 출력됨
+            divEl.innerHTML += "시간 : " + date2.getHours() + "<br>";
+            divEl.innerHTML += "분 : " +  date2.getMinutes() + "<br>";
+            divEl.innerHTML += "초 : " + date2.getSeconds() + "<br>"; 
+
+            // 현재 날짜에서 내 생일까지 얼마나 남았는지 D-day 구하기
+            // 내 생일 세팅
+            let birth = new Date(2022,10-1,18);
+            // 내 생일 - 현재 날짜
+            divEl.innerHTML += "내 생일까지 " + (birth - date) + "일 남음" + "<br>"; // 남은 일수가 아닌 밀리세컨으로 출력됨
+
+            /*
+                1s == 1000ms
+                1m == 60s == 60s*1000ms
+                1h == 60m == 60m*60s == 60m*60s*1000ms
+                id == 24h == 24*60m == 24*60*60 == 24*60*60*1000            
+            */
+
+            // 밀리세컨 값을 나눠서 남은 일수 구하기!
+            const dday = (birth - date) / (24*60*60*1000);
+            // 디데이 일수 출력(소수자리가 출력되므로 반올림 처리하기)
+            divEl.innerHTML += "내 생일까지 " + Math.round(dday) + "일 남음";
+
+        }
+
+    </script>
     
 </body>
 
