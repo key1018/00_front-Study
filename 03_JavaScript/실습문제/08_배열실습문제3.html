@@ -22,12 +22,27 @@
     <fieldset>
         <legend>입력</legend>
         <input type="text" id="textInput"> 
-        <button onclick="plusText();">입력</button>
+        <button onclick="plusArray();">입력</button>
     </fieldset>
     <br>
-    <div id="result"></div>
+    <div id="result">이 부분에 정답이 출력 될 수 있도록 하세요</div>
+    <button onclick="plusText();">출력</button>
 
     <script>
+
+        // 전역변수로 배열 선언
+        const arr = new Array();
+            
+
+        function plusArray() {
+
+            const textArr = document.getElementById('textInput');
+
+            arr.push(textArr.value);
+
+            textArr.value="";
+
+        }
 
         function plusText() {
 
@@ -51,16 +66,19 @@
         //     }
                  
             // 방법2.
-            inputEl = document.getElementById('textInput').value;
+            // inputEl = document.getElementById('textInput').value;
             
-            // div요소에 입력받은 값들 텍스트에 넣어서 출력하기
-            for(let i =0; i < inputEl.length; i++) {
-                divEl.innerHTML += inputEl[i];
-            }
-            console.log(inputEl);
+            // // div요소에 입력받은 값들 텍스트에 넣어서 출력하기
+            // for(let i =0; i < inputEl.length; i++) {
+            //     divEl.innerHTML += inputEl[i];
+            // }
+            // console.log(inputEl);
 
-            // 클릭할때마다 input 텍스트 상자 비우기
-            inputEl.value="";
+            // // 클릭할때마다 input 텍스트 상자 비우기
+            // inputEl.value="";
+
+            // 방법3. join을 통해 배열에 담긴 값 출력하기
+            divEl.innerHTML = arr.join();
         }
 
     </script>
