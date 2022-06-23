@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_이벤트</title>
+    <style>
+        .area{
+            border:1px solid black;
+            width:300px;
+            height:200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>이벤트(Event)</h1>
+    <h2>1. 이벤트 모델 종류</h2>
+
+    <h3>* 고전(기본) 이벤트 모델</h3>
+    <p>
+        특정 요소객체를 가지고 와서 해당 요소의 이벤트 속성에 접근한 후 <br>
+        이벤트 핸들러를 연결하는 방식
+    </p>
+
+    <!-- 요소내부에 직접적으로 이번테 속성 기술 x
+        다만 요소를 선택할 수 있도록 고유한 아이디를 기술할 수 있다 -->
+    <button id="oldEvent1">고전 이벤트1</button>
+    <button id="oldEvent2">고전 이벤트2</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+
+        // div요소에 각 함수마다 담도록 전역변수로 생성
+        divEl = document.getElementById('area1');
+
+        // 1. id="oldEvent1" 버튼 누를때마다 실행(이벤트 핸들러)
+        // oldEvent1.onclick = function() { // 
+        //     divEl.innerHTML += "고전 이벤트에서 버튼1을 클릭했습니다.<br>";
+        // }
+
+        // 2. id="oldEvent2" 버튼 누를때마다 실행(이벤트 핸들러)
+        oldEvent2.onclick = function() {
+            divEl.innerHTML += "고전 이벤트에서 버튼2을 클릭하고 버튼1은 제거했습니다.<br>";
+            // oldEvent1의 이벤트 제거 
+            document.getElementById('oldEvent1').onclick = null; // 버튼2를 누르고 버튼1을 누르면 실행 안됨 => 이벤트를 제거했으므로!!
+        }
+
+        // =>> 한줄로 줄이기
+        // id="oldEvent1" 의 경우
+        document.getElementById('oldEvent1').onclick=function() {
+            divEl.innerHTML += "고전 이벤트에서 버튼1을 클릭했습니다.<br>";
+        }
+
+        //  id="oldEvent2" 의 경우
+        document.getElementById('oldEvent2').onclick = function() {
+            divEl.innerHTML += "고전 이벤트에서 버튼2을 클릭하고 버튼1은 제거했습니다.<br>";
+            document.getElementById('oldEvent1').onclick = null;
+        }
+
+    </script>
+
+    
+
+
+</body>
+</html>
