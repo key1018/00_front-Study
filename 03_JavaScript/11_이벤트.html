@@ -30,6 +30,7 @@
         다만 요소를 선택할 수 있도록 고유한 아이디를 기술할 수 있다 -->
     <button id="oldEvent1">고전 이벤트1</button>
     <button id="oldEvent2">고전 이벤트2</button>
+    <button id="oldEvent3">고전 이벤트3</button>
     <div class="area" id="area1"></div>
 
     <script>
@@ -47,6 +48,21 @@
             divEl.innerHTML += "고전 이벤트에서 버튼2을 클릭하고 버튼1은 제거했습니다.<br>";
             // oldEvent1의 이벤트 제거 
             document.getElementById('oldEvent1').onclick = null; // 버튼2를 누르고 버튼1을 누르면 실행 안됨 => 이벤트를 제거했으므로!!
+        }
+
+        // 3. id="oldEvent3" 버튼 누를때마다 실행(이벤트 핸들러)   
+        oldEvent3.onclick = function() {
+
+            const newWindow = window.open();
+            const yesOrNo = newWindow.confirm("페이지를 닫겠습니까?");
+            console.log(yesOrNo);
+
+                if(yesOrNo == true) {
+                    newWindow.alert("3초뒤에 종료됩니다.");
+                        setTimeout(function() {
+                            newWindow.close();
+                        }, 3000);
+                }
         }
 
         // =>> 한줄로 줄이기
@@ -89,26 +105,7 @@
         IE는 9버전부터 지원
     </p>
 
-    <!-- 표준이벤트 또한 요소 내부에 직접적으로 이벤트속성을 기술하지 않는다! -->
-    <button id="standardEvent">표준 이벤트</button>
 
-    <script>
-
-        standardEvent.onclick = function() {
-
-            const newWindow = window.open();
-            const yesOrNo = newWindow.confirm("페이지를 닫겠습니까?");
-            console.log(yesOrNo);
-
-                if(yesOrNo == true) {
-                    newWindow.alert("3초뒤에 종료됩니다.");
-                        setTimeout(function() {
-                            newWindow.close();
-                        }, 3000);
-                }
-        }
-            
-    </script>
     
 </body>
 </html>
