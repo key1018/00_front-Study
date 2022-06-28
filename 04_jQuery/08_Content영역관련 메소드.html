@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_Content영역관련 메소드</title>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Content영역(innerHTML, innerText) 관련 메소드</h1>
+
+    <h3>* html(["문구"]) : innerHTML 속성과 관련된 메소드</h3>
+    <P>
+        선택된 요소의 content영역의 값을 리턴해주거나 또는 변경해주는 메소드 <br>
+        > $("선택자").html() : 선택된 요소의 content영역(innerHTML) 값을 반환해줌 (html태그까지 포함) <br>
+        > $("선택자").html("문구") : 선택된 요소의 content영역(innerHTML) 값을 해당 문구로 변경해줌 (html태그가 존재할 경우 태그로써 해석해줌)
+    </P>
+
+    <div id="test1">
+        <a>네이버로</a>
+    </div>
+
+    <div id="test2"></div>
+
+    <script>
+
+        $(function() {
+
+            // id=test1인 해당 요소의 값을 jQuery 방식을 활용하여 변수에 담기
+            const divEl = $("#test1").html();
+
+            console.log(divEl, typeof(divEl)); // 출력결과 : <a>네이버로</a>, 문자열
+
+            // id=test2인 해당 요소의 innerHTML 안에 id=test1의 문자열 넣기
+            $("#test2").html(divEl);
+
+            // id=test2인 해당 요소에 href 태그 추가하기
+            // 1) 자손 선택자 활용
+            // $("#test2>a").attr("href","http://www.naver.com");
+            // 2) 자손 메소드 활용
+            $("#test2").children().attr("href", "http://www.naver.com");
+
+        })
+
+    </script>
+
+    <h3>* text(["문구"]) : innerText 속성과 관련된 메소드</h3>
+    <p>
+        > $("선택자").text() : 선택된 요소의 content영역(innerText)의 속성값 반환해줌 (단, html태그가 포함x 오로지 텍스트만 반환) <br>
+        > $("선택자").text("문구") : 선택된 요소의 content영역(innerText)의 속성값 변경해줌 (html태그가 존재할 경우 태그로 해석x => 문자열로 해석함)
+    </p>
+
+    <div id="test3">
+        <a>다음으로</a>
+    </div>
+
+    <div id="test4"></div>
+
+    <script>
+
+        $(function() {
+
+            // id=test3의 값을 jQuery를 이용해서 변수에 담기
+            const divEl = $("#test3").text();
+
+            console.log(divEl, typeof(divEl)); // 출력 결과 : 다음으로, string
+            // <a></a>태그가 출력안되고 오로지 텍스트만 출력된 것을 확인할 수 있다
+
+            // id=text4에 id=test3의 문자열 삽입하기
+            $("#test4").text(divEl);
+            console.log($("#test4")); // id=test3에 있는 <a>태그 삽입안되고 오로지 '다음으로'라는 텍스트만 삽입됨
+
+            // 태그 삽입해보기!
+            $("#test4").text("<a>" + divEl + "</a>");
+            // 태그가 삽입된 것이 아닌 입력한 문자들이 문자열 자체로 삽임됨
+            // 태그를 반영하고 싶으면 html() 메소드를 활용하자!!
+                
+        })
+
+    </script>
+    
+    <hr>
+
+    <h4 id="textTest1">테스트</h4>
+    <h4 id="textTest2">테스트</h4>
+    <h4 id="textTest3">테스트</h4>
+    <h4 id="textTest4">테스트</h4>
+    <h4 id="textTest5">테스트</h4>
+    
+    <script>
+
+        $(function() {
+
+            // 현재 선택된 요소에 innerHTML 값을 각기 다른 내용으로 변경
+            // 선택된 요소들에 순차적으로 접근할 때 마다 해당 function이 매번 실행됨(즉, 현재 3번실행됨)
+            // 해당 함수 실행시 리턴된 값으로 문구 변경
+            // 콜백 함수 : 함수 실행 후 반환된 결과값을 가지고 반영되는 함수 
+
+            // => 콜백 함수 실행
+            // $("h4[id^=text]").html(function() {
+            //     return "<h1>텍스트변경</h1>"; // 리턴되는 값에는 태그 반영도 가능함
+            // })
+
+            /*
+                해당 function()이 실행될 떄 마다
+                첫 번째 인자값으로 순차적으로 접근되는 요소의 인덱스 수 전달,
+                두 번째 인자값으로 순차적으로 접근되는 요소의 innerHTML(content 요소) 전달
+                => function(인덱수 수 매개변수, content 매개변수)를 활용하여 전달값을 받을 수 있다    
+            */
+           $("h4[id^=text]").html(function(index, content) {
+                return "<h2>textTest" + (index + 1) + " 의 인덱스 수 : " + index
+                       + ", content 영역의 내용 : " + content + "</h2>";
+           })
+           
+        })
+
+    </script>
+
+</body>
+</html>
