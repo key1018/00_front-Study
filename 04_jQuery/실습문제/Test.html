@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        .area{color:gray;}
+    </style>
+</head>
+
+<body>
+
+    <form action="test.do">
+
+    <fieldset>
+
+        * 아이디 : <input type="text" name="userId" id="userId" required><br>
+        <label class="area">첫 글자는 반드시 영문소문자로, 그리고 영문소문자, 숫자 포함하여 총 4~12자로 입력하시오.</label> <br><br>
+
+        * 비밀번호 : <input type="password" name="userPwd" id="userPwd" required> <br><br>
+
+        * 비밀번호 확인 : <input type="password" name="checkPwd" id="checkPwd" required> <br>
+        <label class="area">위의 비밀번호와 일치하게 입력하시오.</label> <br><br>
+
+        * 이름 : <input type="text" name="userName" id="userName" required> <br>
+        <label class="area">한글로만 이루어져야되며 2글자 이상으로 입력하시오.</label> <br><br>
+
+        * 전화번호 : <input type="text" name="phone" placeholder="-포함하여 기술" id="phone"><br><br>
+        
+        * 취미 : <input type="text" name="hobby" placeholder="축구,농구,야구,독서 등" id="hobby"> <br><br>
+
+        * 거주지 : <select name="place" id="live">
+            <option value="seoul">서울</option>
+            <option value="kyungki">경기</option>
+            <option value="busan">부산</option>
+        </select>
+
+        <br><br>
+        
+        <button onclick="return join();">회원가입</button>
+        <input type="reset" value="취소">
+
+    </fieldset>
+
+    </form>
+
+    <script>
+
+        function join() {
+
+            // 아이디 정규표현식 생성하기
+            let idRegExp = /^[a-z][a-z0-9]{4,12}$/;
+
+            // 아이디 value값을 담을 변수 생성
+            const idEl = document.getElementById('userId').value;
+
+            if(!idRegExp.test(idEl)) {
+                alert("유효한 아이디 형식이 아닙니다.");
+                return false;
+            }
+
+            // 비밀번호 및 확인하는 값 담을 변수 생성
+            const pwdEl = document.getElementById("userPwd").value;
+            const checkEl = document.getElementById("checkPwd").value;
+
+            if(pwdEl != checkEl ) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+
+            // 이름 정규표현식 생성하기
+            let nameRedExp = /^[가-힣]{2}/;
+
+            const nameEl = document.getElementById('userName').value;
+
+            if(!nameRedExp.test(nameEl)) {
+                alert("이름을 다시 입력해주세요.");
+                return false;
+            }
+
+        }
+
+    </script>
+    
+
+</body>
+</html>
