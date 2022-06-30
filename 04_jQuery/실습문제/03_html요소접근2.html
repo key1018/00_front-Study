@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .area{
+            border:1px solid gray;
+            width:300px;
+            height:150px;
+            background-color: bisque;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>HTML 태그에 접근 테스트</h1>
+    <P>단, 구매자는 태그 이름으로 접근, 상품명은 아이디로 접근, 구매가격은 name값으로 접근할 것</P>
+
+    구매자 : <input type="text" id="userName" placeholder="구매자의 이름을 입력하세요."><br><br>
+    상품명 : <input type="text" id="product" placeholder="구매 상품명을 입력하세요."><br><br>
+    가격 : <input type="number" id="price" name="price" placeholder="구매 가격을 입력하세요."><br><br>
+    <button id="accessTag">입력값 출력하기</button> <br><br>
+    <div class="area" id="area1"></div>
+
+    <script>
+
+        $(function() {
+
+            $("#accessTag").click(function() {
+
+                // 구매자 변수에 담기
+                const userInput = $("input[type=text]").val();
+                // 상품명 변수에 담기
+                const proId = $("#product").val();
+                // 가격 변수에 담기
+                const price = $("input[name=price]").val();
+                console.log(userInput, proId, price);
+
+                // div요소의 innerHTML에 출력하기
+                $('#area1').html("구매자 : " + userInput + "<br>상품명 : " + proId + "<br>가격 : " + price); 
+
+            })
+
+        })
+
+    </script>
+    
+</body>
+
+</html>
