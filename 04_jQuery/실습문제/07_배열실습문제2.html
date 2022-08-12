@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제7</title>
+</head>
+<body>
+
+    <h1>배열 실습 문제2</h1>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla1">r b</label> <br>
+        <label id="stringla2">e v o l</label> <br>
+    </fieldset>
+    <input type="text" id="result" placeholder="이 부분에 정답이 출력될 수 있도록 하세요." style="width:600px">
+    <button onclick="sortTest();">처리</button>
+
+    <script>
+
+        function sortTest() {
+
+            // input요소에 값 담기
+            inputEl = document.getElementById('result');
+
+            // label요소들 값 담을 변수 생성
+            const la1 = document.getElementById('stringla1').innerHTML.split(' ');
+            const la2 = document.getElementById('stringla2').innerHTML.split(' ');
+
+            console.log(la1);
+            console.log(la2);
+
+            // label요소들 역순으로 정렬하기
+            la1.reverse();
+            la2.reverse();
+
+            // label요소들 concat으로 연결하기
+            const sum = la1.concat(la2);
+            console.log(sum);
+
+            // 버튼 누를때마다 input요소에 있는 값 초기화하기
+            inputEl.value="";
+
+            // 오름차순으로 정렬한 값들 for 반복문을 활용해서 출력
+            for(let i = 0; i < sum.length; i++) {
+                inputEl.value += sum[i];
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

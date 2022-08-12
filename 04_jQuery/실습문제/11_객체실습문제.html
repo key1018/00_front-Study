@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제11</title>
+    <style>
+        fieldset{
+            width:500px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>객체 실습 문제</h1>
+    
+    <fieldset>
+        <legend>출력창</legend>
+        <label id="area1"></label>
+    </fieldset>
+    <button onclick="inputMember();">입력</button>
+    <button onclick="printMember();">출력</button>
+
+    <script>
+
+        
+        // 텅 빈 Member 객체 생성(전역변수로 생성)
+        const member={};
+
+        function inputMember() {
+
+
+            // prompt를 통해 전달받은 값을 변수에 저장
+            const name = prompt("이름 입력 : ");
+            const age = prompt("나이 입력 : ");
+            const address = prompt("주소 입력 : ");
+
+            // 받은 값을 객체에 저장
+            member.name = name;
+            member.age = age;
+            member.address = address;
+
+            // 메소드 추가하여 생성
+            member.toString = function() {
+                return "이름 : " + this.name + "<br>나이 : " + this.age + "<br>주소 : " + this.address;
+            }
+
+            console.log(member);
+
+        }
+
+        function printMember() {
+
+            // 객체들의 유무를 확인하는 변수(in태그를 통해서 있으면 true, 없으면 false값 반환)
+            const name = 'name' in member;
+            const age = 'age' in member;
+            const address = 'address' in member;
+
+            if(name == false && age == false && address == false) {
+                alert("내용을 먼저 입력해주세요.");
+            } else {
+                 document.getElementById('area1').innerHTML = member;
+            }
+           
+        }
+
+
+    </script>
+    
+</body>
+</html>
